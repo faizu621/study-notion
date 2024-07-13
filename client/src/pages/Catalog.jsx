@@ -8,7 +8,6 @@ import { categories } from "../services/apis";
 import { apiConnector } from "../services/apiconnector";
 import { categoryPageData } from "../services/operations/pageAndComponentData";
 import CourseCard from "../components/core/CatalogPage/CourseCard";
-
 const Catalog = () => {
   const { catalogName } = useParams();
   const [catalogPageData, setCatalogPageData] = useState(null);
@@ -34,8 +33,9 @@ const Catalog = () => {
         try {
           const res = await categoryPageData(categoryId);
           console.log("response1", res);
-          setCatalogPageData(res);
+          setCatalogPageData({...res});
           console.log("catalogPageData", catalogPageData);
+          console.log("diffrentcatgeory",catalogPageData?.differentCategory?.course);
         } catch (error) {
           console.log(error);
         }

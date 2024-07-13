@@ -166,7 +166,7 @@ const SubSectionModal = ({
             )}
           </div>
           {!view && (
-            <IconBtn
+            <IconBtn 
               type="submit"
               disabled={loading}
               text={`${loading ? "Loading" : edit ? "Save Cahnges" : "Save"}`}

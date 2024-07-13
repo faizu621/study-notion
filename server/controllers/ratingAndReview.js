@@ -40,7 +40,7 @@ exports.createRating=async(req,res)=>{
                                                         });
 
         //add this course
-        const updatedCourse=await Course.findByIdAndUpdate({_id:courseId},{$push:{ratingAndReviews:_id}},{new:true});
+        const updatedCourse=await Course.findByIdAndUpdate({_id:courseId},{$push:{ratingAndReviews:ratingAndReview}},{new:true});
 
         //return res
         res.status(200).json({

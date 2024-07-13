@@ -1,5 +1,5 @@
-import { Table, Thead, Tr, Th, Tbody, Td } from "react-super-responsive-table";
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
+//import { Table, Thead, Tr, Th, Tbody, Td } from "react-super-responsive-table";
 import * as React from 'react'
 import { formatDate } from "../../../services/formateDate";
 import { HiClock } from "react-icons/hi";
@@ -34,38 +34,38 @@ const CourseTable = ({ courses, setCourses }) => {
   console.log("courses", courses.length);
   return (
     <div>
-      <Table>
-        <Thead>
-          <Tr className="flex gap-x-10 rounded-t-md border-b border-b-richblack-800 px-6 py-2">
-            <Th className="flex-1 text-left text-sm font-medium uppercase text-richblack-100">
+      <div>
+        <div>
+          <div className="flex gap-x-10 rounded-t-md border-b border-b-richblack-800 px-6 py-2">
+            <div className="flex-1 text-left text-sm font-medium uppercase text-richblack-100">
               Courses
-            </Th>
-            <Th className="text-left text-sm font-medium uppercase text-richblack-100">
+            </div>
+            <div className="text-left text-sm font-medium uppercase text-richblack-100">
               Duration
-            </Th>
-            <Th className="text-left text-sm font-medium uppercase text-richblack-100">
+            </div>
+            <div className="text-left text-sm font-medium uppercase text-richblack-100">
               Price
-            </Th>
-            <Th className="text-left text-sm font-medium uppercase text-richblack-100">
+            </div>
+            <div className="text-left text-sm font-medium uppercase text-richblack-100">
               Actions
-            </Th>
-          </Tr>
-        </Thead>
-        <Tbody>
+            </div>
+          </div>
+        </div>
+        <div>
           {courses.length === 0 ? (
-            <Tr>
-              <Td className="py-10 text-center text-2xl font-medium text-richblack-100">
+            <div>
+              <div className="py-10 text-center text-2xl font-medium text-richblack-100">
                 No courses found
                 {/* TODO: Need to change this state */}
-              </Td>
-            </Tr>
+              </div>
+            </div>
           ) : (
             courses.map((course) => (
-              <Tr
+              <div
                 key={course._id}
                 className="flex gap-x-10 border-b border-richblack-800 px-6 py-8"
               >
-                <Td className="flex flex-1 gap-x-4">
+                <div className="flex flex-1 gap-x-4">
                   <img
                     src={course?.thumbnail}
                     alt={course.courseName}
@@ -101,14 +101,14 @@ const CourseTable = ({ courses, setCourses }) => {
                       </p>
                     )}
                   </div>
-                </Td>
-                <Td className="text-sm font-medium text-richblack-100">
+                </div>
+                <div className="text-sm font-medium text-richblack-100">
                   2hr 30min
-                </Td>
-                <Td className="text-sm font-medium text-richblack-100">
+                </div>
+                <div className="text-sm font-medium text-richblack-100">
                   ₹{course.price}
-                </Td>
-                <Td className="text-sm font-medium text-richblack-100 ">
+                </div>
+                <div className="text-sm font-medium text-richblack-100 ">
                   <button
                   disabled={loading}
                     onClick={() => {
@@ -140,12 +140,12 @@ const CourseTable = ({ courses, setCourses }) => {
                         className="px-1 transition-all duration-200 hover:scale-110 hover:text-[#ff0000]"
                     />
                   </button>
-                </Td>
-              </Tr>
+                </div>
+              </div>
             ))
           )}
-        </Tbody>
-      </Table>
+        </div>
+      </div>
       {confirmationModal && <ConfirmationModal modalData={confirmationModal} />}
     </div>
   );

@@ -71,12 +71,12 @@ const Footer = () =>{
           <div className=" lg:w-[50%] flex flex-wrap gap-14 lg:px-14 ">
              {
               FooterLink2.map( (element,index)=>(
-                <div className=" flex flex-col gap-2 ">
+                <div className=" flex flex-col gap-2 " key={index}>
                     <div className=" text-richblack-5 font-bold ">{element.title} </div>
                     <div className=" flex flex-col text-richblack-300 gap-1 ">
                       {
-                        element.links.map((link)=>(
-                          <Link to={link.link}>
+                        element.links.map((link,ind)=>(
+                          <Link to={link.link} key={ind}>
                           {
                             <div className="">
                               {link.title}

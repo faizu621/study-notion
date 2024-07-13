@@ -11,7 +11,9 @@ import BecomeInstructor from "../components/core/Home/BecomeInstructor";
 import ReviewsSection from "../components/core/Home/ReviewsSection";
 import PowerOfCodeSection from "../components/core/Home/PowerOfCodeSection";
 import Footer from "../components/common/Footer";
-import Navbar from "../components/common/Navbar";
+import ReviewSlider from "../components/common/ReviewSlider";
+import InstructorSection from '../components/core/Home/InstructorSection';
+// import Navbar from "../components/common/Navbar";
 
 const Home = () =>{ 
     return (
@@ -126,10 +128,19 @@ const Home = () =>{
          <LearnLangSection/>
         </div>
          {/* Section 3 */}
-         <div className=" h-fit">
+         {/* <div className=" h-fit">
             <BecomeInstructor/>
-            <ReviewsSection/>
-         </div>
+         </div> */}
+         <div className="relative mx-auto my-20  w-11/12 max-w-maxContent  flex flex-col justify-between gap-8 bg-richblack-900 text-white">
+        {/* Become a instructor section */}
+        <InstructorSection />
+
+        {/* Reviws from Other Learner */}
+        <h1 className="text-center text-4xl font-semibold mt-8">
+          Reviews from other learners
+        </h1>
+        <ReviewSlider />
+      </div>
 
          {/* footer */}
          <Footer/>

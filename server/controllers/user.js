@@ -22,6 +22,7 @@ exports.sendOTP=async (req,res)=>{
             })
         }
         //otp generate
+        console.log("abcdef");
         var otp=otpgenerateor.generate(6,{
             upperCaseAlphabets:false,
             lowerCaseAlphabets:false,
@@ -38,7 +39,6 @@ exports.sendOTP=async (req,res)=>{
                 lowerCaseAlphabets:false,
                 SpecialChars:false,
             });
-
             result =await OTP.findOne({otp:otp});
         }
 

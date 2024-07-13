@@ -255,10 +255,11 @@ exports.getCourseDetails = async (req, res) => {
         path: "courseContent",
         populate: {
           path: "subsection",
+          //select: "videoUrl",
         },
       })
       .exec();
-    console.log(courseDetails);
+    console.log("courseDetails",courseDetails);
     if (!courseDetails) {
       return res.status(400).json({
         success: false,
@@ -266,9 +267,22 @@ exports.getCourseDetails = async (req, res) => {
       });
     }
 
+    let totalDurationInSeconds = 0
+    courseDetails.courseContent?.forEach((content) => {
+      content.subsection.forEach((subSection) => {
+        const timeDurationInSeconds = parseInt(subSection.timeduration)
+        totalDurationInSeconds += timeDurationInSeconds
+      })
+    })
+
+     const totalDuration = convertSecondsToDuration(totalDurationInSeconds)
+
     res.status(200).json({
       success: true,
-      data: courseDetails,
+      data: {
+        courseDetails,
+        totalDuration,
+      },
     });
   } catch (err) {
     res.status(500).json({
@@ -383,6 +397,8 @@ exports.getFullCourseDetails = async (req, res) => {
         },
       })
       .exec();
+
+    console.log('course content',courseDetails); 
 
     let courseProgressCount = await CourseProgress.findOne({
       courseId: courseId,

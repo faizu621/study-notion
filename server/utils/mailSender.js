@@ -22,10 +22,10 @@ const mailSender=async(email,title,body)=>{
         return info;
     } catch(err){
         console.log(err.message);
-        resizeBy.json({
-            success:false,
-            message:"Error in mail sending",
-        })
+        // resizeBy.json({
+        //     success:false,
+        //     message:"Error in mail sending",
+        // })
     }
 }
 

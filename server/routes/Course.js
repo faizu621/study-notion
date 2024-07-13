@@ -35,6 +35,8 @@ const {
   getAvgRating,
   getAllRating,
 } = require("../controllers/ratingAndReview");
+
+const {updateCourseProgress} =require("../controllers/courseProgress");
 // const { RouterProvider } = require("react-router-dom");
 
 //                     COURSE ROUTES
@@ -45,7 +47,8 @@ router.get("/getAllCourses", getAllCourses);
 router.post("/editCourse", auth, isInstructor, editCourse);
 router.get("/getInstructorCourses", auth, isInstructor, getInstructorCourses);
 router.delete("/deleteCourse",auth,isInstructor,deleteCourse);
-router.post("/getFullCourseDetails",auth,isInstructor,getFullCourseDetails);
+router.post("/getFullCourseDetails",auth,getFullCourseDetails);
+router.post("/updateCourseProgress", auth, isStudent, updateCourseProgress)
 
 //                    SECTION ROUTES
 
@@ -70,5 +73,6 @@ router.post("/getCategoryPageDetails", categoryPageDetails);
 router.post("/createRating", auth, isStudent, createRating);
 router.post("/getAvgRating", getAvgRating);
 router.get("/getAllRating", getAllRating);
+router.get("/getReviews", getAllRating)
 
 module.exports = router;

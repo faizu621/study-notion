@@ -1,6 +1,4 @@
-const BASE_URL = process.env.REACT_APP_BASE_URL;
-
-console.log("this ..", process.env.REACT_APP_BASE_URL);
+const BASE_URL = "http://localhost:4000/api/v1";
 
 export const categories = {
   CATEGORIES_API: "http://localhost:4000/api/v1/course/showAllCategories",
@@ -28,6 +26,12 @@ export const profileEndpoints={
   GET_INSTRUCTOR_DATA_API: BASE_URL + "/profile/instructorDashboard",
 }
 
+export const studentEndpoints = {
+  COURSE_PAYMENT_API: BASE_URL + "/payment/capturePayment",
+  COURSE_VERIFY_API: BASE_URL + "/payment/verifyPayment",
+  SEND_PAYMENT_SUCCESS_EMAIL_API: BASE_URL + "/payment/sendPaymentSuccessEmail",
+}
+
 export const courseEndpoints={
   COURSE_CATEGORIES_API: BASE_URL + "/course/showAllCategories",
   GET_ALL_COURSE_API: BASE_URL + "/course/getAllCourses",
@@ -51,4 +55,9 @@ export const courseEndpoints={
 // CATALOG PAGE DATA
 export const catalogData = {
   CATALOGPAGEDATA_API: BASE_URL + "/course/getCategoryPageDetails",
+}
+
+// RATINGS AND REVIEWS
+export const ratingsEndpoints = {
+  REVIEWS_DETAILS_API: BASE_URL + "/course/getReviews",
 }
