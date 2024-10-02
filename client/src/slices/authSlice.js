@@ -1,6 +1,7 @@
 
 //import {createSlice } 
 import { createSlice } from "@reduxjs/toolkit";
+import React from 'react'
 
 const initialState={
     signupData:null,

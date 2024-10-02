@@ -2,6 +2,7 @@ import { useState } from "react";
 import { MdClose } from "react-icons/md";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
+import React from "react";
 
 const ChipInput = ({
   label,

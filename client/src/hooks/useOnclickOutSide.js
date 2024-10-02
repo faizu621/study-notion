@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import React from 'react'
 
 // This hook detects clicks outside of the specified component and calls the provided handler function.
 export default function useOnClickOutside(ref, handler) {

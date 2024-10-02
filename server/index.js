@@ -48,7 +48,7 @@ app.use("/api/v1/payment", paymentRoutes);
 //app.use('/api/v1/reach',contactUsRoute);
 //default route
 app.get("/",(req,res)=>{
-    return res.json({
+    return res.json({ 
         success:true,
         message:"Your server is up and running...."
     })

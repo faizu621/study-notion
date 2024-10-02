@@ -4,6 +4,7 @@ import { settingsEndpoints } from "../apis";
 import { setUser } from "../../slices/profileSlice";
 import { useSelector } from "react-redux";
 import { logout } from "./authAPI";
+import React from 'react'
 
 const { UPDATE_DISPLAY_PICTURE_API,UPDATE_PROFILE_API,CHANGE_PASSWORD_API,DELETE_PROFILE_API } = settingsEndpoints;
 

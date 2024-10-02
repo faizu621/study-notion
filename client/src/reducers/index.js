@@ -4,7 +4,7 @@ import authReducer from "../slices/authSlice";
 import profileReducer from "../slices/profileSlice";
 import cartReducer from "../slices/cartSlice";
 import viewCourseReducer from "../slices/viewCourseSlice"
-
+import React from 'react'
 import courseReducer from "../slices/courseSlice";
 
 const  rootReducer=combineReducers({

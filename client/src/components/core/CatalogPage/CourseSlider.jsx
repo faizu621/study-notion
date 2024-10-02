@@ -1,7 +1,7 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import CourseCard from "./CourseCard";
 import {FreeMode, Navigation, Pagination, Mousewheel, Keyboard } from "swiper/modules";
-
+import React from "react";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";

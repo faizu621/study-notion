@@ -3,7 +3,7 @@ import Signup from "./Signup"
 import SignupForm from "./SignupForm"
 import {signupImage} from "../../assets/Images/signup.webp";
 import {loginImage} from "../../assets/Images/login.webp";
-
+import React from "react";
 const Templates= ({heading,desc1,desc2,formType}) =>{
     return(
         <div>

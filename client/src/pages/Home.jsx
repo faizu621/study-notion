@@ -1,4 +1,5 @@
 import * as React from 'react'
+
 import {FaArrowRight} from "react-icons/fa";
 import Highlight from "../components/core/Home/Highlight";
 import FTAButton from "../components/core/FTAButton";

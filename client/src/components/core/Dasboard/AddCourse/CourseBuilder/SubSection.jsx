@@ -10,6 +10,7 @@ import {
   createSubSection,
   updateSubSection,
 } from "../../../../../services/operations/CourseApi";
+import React from "react";
 const SubSectionModal = ({
   modalData,
   setModalData,

@@ -7,8 +7,8 @@ import { setUser } from "../../slices/profileSlice";
 import {resetCart} from "../../slices/cartSlice";
 import { endpoints } from "../apis";
 import { FaChalkboardTeacher } from "react-icons/fa";
+import React from 'react'
 const {SENDOTP_API,SIGNUP_API,LOGIN_API,RESETPASSTOKEN_API,RESETPASSWORD_API} =endpoints;
-
 
 export function otpSend(email,navigate){
     return async (dispatch) =>{

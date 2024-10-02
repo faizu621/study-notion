@@ -36,8 +36,9 @@ function App() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const { user } = useSelector((state) => state.profile)
-
+  const BASE_URL=import.meta.env.VITE_BASE_URL;
   useEffect(() => {
+    console.log("base", BASE_URL);
     if (localStorage.getItem("token")) {
       const token = JSON.parse(localStorage.getItem("token"))
       dispatch(getUserDetails(token, navigate))

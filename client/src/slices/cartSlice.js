@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-hot-toast";
+import React from 'react'
 
 const initialState = {
   totalItems: localStorage.getItem("totalItems")

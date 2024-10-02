@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import {TiStarFullOutline,  TiStarHalfOutline, TiStarOutline} from "react-icons/ti"
+import React from "react";
 
 function RatingStars({Review_Count,Star_Size}){
     const [starsCount,setStarsCount]=useState({

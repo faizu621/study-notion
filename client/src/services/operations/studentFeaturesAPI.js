@@ -7,7 +7,7 @@ import { apiConnector } from "../apiconnector"
 import { studentEndpoints } from "../apis"
 import dotenv from "dotenv";
 
-const RAZORPAY_KEY="rzp_test_O0kFrRdmmcdiaY";
+
 const {
   COURSE_PAYMENT_API,
   COURSE_VERIFY_API,
@@ -69,7 +69,7 @@ export default async function BuyCourse(
     // Opening the Razorpay SDK
 
     const options = {
-      key:RAZORPAY_KEY,
+      key:import.meta.env.RAZORPAY_KEY,
       currency: orderResponse.data.data.currency,
       amount: `${orderResponse.data.data.amount}`,
       order_id: orderResponse.data.data.id,

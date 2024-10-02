@@ -8,6 +8,7 @@ import { BiArrowBack } from "react-icons/bi";
 import { RxCountdownTimer } from "react-icons/rx";
 import { otpSend, signUp } from "../services/operations/authAPI";
 
+
 const VerifyEmail = () => {
   const dispatch = useDispatch();
   const [otp, setOtp] = useState("");

@@ -91,7 +91,7 @@ const Navbar = () => {
                     <RiArrowDropDownLine className=" text-[24px] " />
                     <div className="   lg:w-[20px] rotate-45 absolute top-[100%] left-[75%] bg-richblack-5 h-[20px] invisible group-hover:visible transition-all duration-200 "></div>
                     <div className=" flex flex-col  invisible absolute lg:w-[200px] bg-richblack-5 top-[110%] -left-[110%] h-[200px] z-10 group-hover:visible transition-all duration-200 text-black p-4 rounded-md ">
-                      {subLinks.length ? (
+                      {subLinks?.length ? (
                         subLinks.map((subLink, index) => (
                           <Link
                             to={`/catalog/${subLink.name

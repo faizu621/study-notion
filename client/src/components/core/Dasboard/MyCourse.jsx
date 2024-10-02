@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import { fetchInstructorCourses } from "../../../services/operations/CourseApi";
 import { useSelector } from "react-redux";
 import CourseTable from "./CourseTable";
+
 function MyCourse(){
     const navigate=useNavigate();
 
