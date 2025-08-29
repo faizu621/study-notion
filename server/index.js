@@ -25,8 +25,8 @@ app.use(express.json());
 app.use(cookieParser());
 
 const allowedOrigins = [
+    process.env.FRONTEND_URL, // https://elearning-notion.onrender.com
   "http://localhost:5173",
-  process.env.FRONTEND_URL, // https://elearning-notion.onrender.com
 ];
 
 app.use(
@@ -37,6 +37,7 @@ app.use(
         return callback(null, true);
       }
       if (allowedOrigins.includes(origin)) {
+        console.log("Origin - ", origin, " Frontend = ", process.env.FRONTEND_URL)
         return callback(null, true);
       }
       console.log("❌ Blocked by CORS:", origin);
