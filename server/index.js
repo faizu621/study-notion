@@ -36,8 +36,8 @@ app.use(
         // Allow requests with no origin (like Postman or server-to-server)
         return callback(null, true);
       }
+      console.log("Origin - ", origin, " Frontend = ", process.env.FRONTEND_URL)
       if (allowedOrigins.includes(origin)) {
-        console.log("Origin - ", origin, " Frontend = ", process.env.FRONTEND_URL)
         return callback(null, true);
       }
       console.log("❌ Blocked by CORS:", origin);
