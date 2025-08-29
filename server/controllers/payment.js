@@ -83,6 +83,8 @@ exports.verifyPayment = async (req, res) => {
   const razorpay_signature = req.body?.razorpay_signature
   const courses = req.body?.courses
 
+  
+
   const userId = req.user.id
 
   if (

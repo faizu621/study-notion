@@ -64,10 +64,12 @@ export default async function BuyCourse(
     if (!orderResponse.data.success) {
       throw new Error(orderResponse.data.message)
     }
+    console.log("Razorpay_key",import.meta.env.RAZORPAY_KEY);
     console.log("PAYMENT RESPONSE FROM BACKEND............", orderResponse.data)
 
     // Opening the Razorpay SDK
 
+    
     const options = {
       key:import.meta.env.RAZORPAY_KEY,
       currency: orderResponse.data.data.currency,
