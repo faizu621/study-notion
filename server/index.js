@@ -30,27 +30,27 @@ const allowedOrigins = [
   
 ];
 
-//app.use(cors());
+app.use(cors());
 
 
-app.use(
-  cors({
-    origin: function (origin, callback) {
-      if (!origin) {
-        // Allow requests with no origin (like Postman or server-to-server)
-        return callback(null, true);
-      }
-      console.log("Origin - ", origin, " Frontend = ", process.env.FRONTEND_URL)
-      if (allowedOrigins.includes(origin)) {
-        return callback(null, true);
-      }
-      console.log("❌ Blocked by CORS:", origin);
-      return callback(new Error("Not allowed by CORS"));
-    },
-    methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
-    credentials: true,
-  })
-);
+// app.use(
+//   cors({
+//     origin: function (origin, callback) {
+//       if (!origin) {
+//         // Allow requests with no origin (like Postman or server-to-server)
+//         return callback(null, true);
+//       }
+//       console.log("Origin - ", origin, " Frontend = ", process.env.FRONTEND_URL)
+//       if (allowedOrigins.includes(origin)) {
+//         return callback(null, true);
+//       }
+//       console.log("❌ Blocked by CORS:", origin);
+//       return callback(new Error("Not allowed by CORS"));
+//     },
+//     methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
+//     credentials: true,
+//   })
+// );
 
 
 app.use(
