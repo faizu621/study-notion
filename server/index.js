@@ -27,7 +27,11 @@ app.use(cookieParser());
 const allowedOrigins = [
     process.env.FRONTEND_URL, // https://elearning-notion.onrender.com
   "http://localhost:5173",
+  
 ];
+
+//app.use(cors());
+
 
 app.use(
   cors({
