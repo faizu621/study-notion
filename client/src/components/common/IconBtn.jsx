@@ -14,7 +14,7 @@ export default function IconBtn({
         onClick={()=>onclick()}
         className={`flex items-center ${
           outline ? "border border-yellow-50 bg-transparent" : "bg-yellow-50"
-        } cursor-pointer gap-x-2 rounded-md py-2 px-5 font-semibold text-richblack-900 ${customClasses}`}
+        } cursor-pointer gap-x-1 sm:gap-x-2 rounded-md py-2 sm:py-2.5 px-4 sm:px-5 font-semibold text-sm sm:text-base text-richblack-900 ${customClasses}`}
         type={type}
       >
         {children ? (

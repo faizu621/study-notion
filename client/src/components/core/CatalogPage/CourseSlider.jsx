@@ -9,50 +9,33 @@ import "swiper/css/pagination";
 const CourseSlider = ({ courses }) => {
   //console.log("courses", courses);
   return (
-    <>
+    <div className="w-full">
       {courses?.length ? (
         <Swiper
-          // cssMode={true}
-          spaceBetween={50}
-          slidesPerView={3}
-          // navigation={true}
-          pagination={{
-            clickable: true,
-          }}
+          spaceBetween={8}
+          slidesPerView={1}
+          pagination={{ clickable: true }}
           breakpoints={{
-            1024: {
-              slidesPerView: 3,
-            },
+            480: { slidesPerView: 1, spaceBetween: 8 },
+            640: { slidesPerView: 2, spaceBetween: 12 },
+            1024: { slidesPerView: 3, spaceBetween: 16 },
+            1280: { slidesPerView: 4, spaceBetween: 20 },
           }}
-          // mousewheel={true}
-          // keyboard={true}
-          // autoplay={true}
           loop={true}
-          modules={[FreeMode,Navigation, Pagination, Mousewheel, Keyboard]}
+          modules={[FreeMode, Navigation, Pagination, Mousewheel, Keyboard]}
         >
           {courses.map((course, i) => (
             <SwiperSlide key={i}>
-              <CourseCard course={course} Height={"h-[250px]"} />
+              <div className="px-1 sm:px-2 py-2 sm:py-4 h-full flex items-stretch">
+                <CourseCard course={course} Height="h-[160px] sm:h-[200px] md:h-[220px] lg:h-[250px]" />
+              </div>
             </SwiperSlide>
           ))}
         </Swiper>
       ) : (
-        <p className="text-xl text-richblack-5">No Course Found</p>
+        <p className="text-sm sm:text-base md:text-xl text-richblack-5">No Course Found</p>
       )}
-
-      {/* <Swiper
-        cssMode={true}
-        spaceBetween={50}
-        slidesPerView={3}
-        navigation={true}
-        pagination={true}
-        mousewheel={true}
-        keyboard={true}
-        modules={[Navigation, Pagination, Mousewheel, Keyboard]}
-        className=" text-richblack-5 "
-      >
-      </Swiper> */}
-    </>
+    </div>
   );
 };
 export default CourseSlider;

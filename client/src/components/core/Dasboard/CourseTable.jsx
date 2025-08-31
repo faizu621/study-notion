@@ -33,67 +33,43 @@ const CourseTable = ({ courses, setCourses }) => {
   }
   console.log("courses", courses.length);
   return (
-    <div>
+    <div className="w-full overflow-x-auto">
       <div>
         <div>
-          <div className="flex gap-x-10 rounded-t-md border-b border-b-richblack-800 px-6 py-2">
-            <div className="flex-1 text-left text-sm font-medium uppercase text-richblack-100">
-              Courses
-            </div>
-            <div className="text-left text-sm font-medium uppercase text-richblack-100">
-              Duration
-            </div>
-            <div className="text-left text-sm font-medium uppercase text-richblack-100">
-              Price
-            </div>
-            <div className="text-left text-sm font-medium uppercase text-richblack-100">
-              Actions
-            </div>
+          <div className="flex flex-col sm:flex-row gap-2 sm:gap-x-10 rounded-t-md border-b border-b-richblack-800 px-2 sm:px-4 md:px-6 py-2">
+            <div className="flex-1 text-left text-xs sm:text-sm font-medium uppercase text-richblack-100">Courses</div>
+            <div className="text-left text-xs sm:text-sm font-medium uppercase text-richblack-100">Duration</div>
+            <div className="text-left text-xs sm:text-sm font-medium uppercase text-richblack-100">Price</div>
+            <div className="text-left text-xs sm:text-sm font-medium uppercase text-richblack-100">Actions</div>
           </div>
         </div>
         <div>
           {courses.length === 0 ? (
             <div>
-              <div className="py-10 text-center text-2xl font-medium text-richblack-100">
+              <div className="py-6 sm:py-10 text-center text-base sm:text-xl font-medium text-richblack-100">
                 No courses found
                 {/* TODO: Need to change this state */}
               </div>
             </div>
           ) : (
             courses.map((course) => (
-              <div
-                key={course._id}
-                className="flex gap-x-10 border-b border-richblack-800 px-6 py-8"
-              >
-                <div className="flex flex-1 gap-x-4">
-                  <img
-                    src={course?.thumbnail}
-                    alt={course.courseName}
-                    className="h-[148px] w-[220px] rounded-lg object-cover"
-                  />
+              <div key={course._id} className="flex flex-col sm:flex-row gap-2 sm:gap-x-10 border-b border-richblack-800 px-2 sm:px-4 md:px-6 py-4 sm:py-8">
+                <div className="flex flex-1 gap-2 sm:gap-x-4">
+                  <img src={course?.thumbnail} alt={course.courseName} className="h-20 sm:h-[120px] md:h-[148px] w-28 sm:w-[160px] md:w-[220px] rounded-lg object-cover" />
                   <div className="flex flex-col justify-between">
-                    <p className="text-lg font-semibold text-richblack-5">
-                      {course.courseName}
-                    </p>
+                    <p className="text-sm sm:text-base md:text-lg font-semibold text-richblack-5">{course.courseName}</p>
                     <p className="text-xs text-richblack-300">
-                      {course.courseDescription.split(" ").length >
-                      TRUNCATE_LENGTH
-                        ? course.courseDescription
-                            .split(" ")
-                            .slice(0, TRUNCATE_LENGTH)
-                            .join(" ") + "..."
+                      {course.courseDescription.split(" ").length > TRUNCATE_LENGTH
+                        ? course.courseDescription.split(" ").slice(0, TRUNCATE_LENGTH).join(" ") + "..."
                         : course.courseDescription}
                     </p>
-                    <p className="text-[12px] text-white">
-                      Created: {formatDate(course.createdAt)}
-                    </p>
+                    <p className="text-[11px] sm:text-xs md:text-sm text-white">Created: {formatDate(course.createdAt)}</p>
                     {course.status === COURSE_STATUS.DRAFT ? (
-                      <p className="flex w-fit flex-row items-center gap-2 rounded-full bg-richblack-700 px-2 py-[2px] text-[12px] font-medium text-pink-100">
-                        <HiClock size={14} />
-                        Drafted
+                      <p className="flex w-fit flex-row items-center gap-2 rounded-full bg-richblack-700 px-2 py-[2px] text-[11px] sm:text-xs md:text-sm font-medium text-pink-100">
+                        <HiClock size={14} /> Drafted
                       </p>
                     ) : (
-                      <p className="flex w-fit flex-row items-center gap-2 rounded-full bg-richblack-700 px-2 py-[2px] text-[12px] font-medium text-yellow-100">
+                      <p className="flex w-fit flex-row items-center gap-2 rounded-full bg-richblack-700 px-2 py-[2px] text-[11px] sm:text-xs md:text-sm font-medium text-yellow-100">
                         <div className="flex h-3 w-3 items-center justify-center rounded-full bg-yellow-100 text-richblack-700">
                           <FaCheck size={8} />
                         </div>
@@ -102,43 +78,14 @@ const CourseTable = ({ courses, setCourses }) => {
                     )}
                   </div>
                 </div>
-                <div className="text-sm font-medium text-richblack-100">
-                  2hr 30min
-                </div>
-                <div className="text-sm font-medium text-richblack-100">
-                  ₹{course.price}
-                </div>
-                <div className="text-sm font-medium text-richblack-100 ">
-                  <button
-                  disabled={loading}
-                    onClick={() => {
-                      navigate(`/dashboard/edit-course/${course._id}`)
-                    }}
-                    title="Edit"
-                    className="px-2 transition-all duration-200 hover:scale-110 hover:text-caribbeangreen-300">
-                    <FiEdit2 size={20} 
-                        
-                    />
+                <div className="text-xs sm:text-sm font-medium text-richblack-100 flex items-center">2hr 30min</div>
+                <div className="text-xs sm:text-sm font-medium text-richblack-100 flex items-center">₹{course.price}</div>
+                <div className="text-xs sm:text-sm font-medium text-richblack-100 flex items-center">
+                  <button disabled={loading} onClick={() => { navigate(`/dashboard/edit-course/${course._id}`) }} title="Edit" className="px-1 sm:px-2 transition-all duration-200 hover:scale-110 hover:text-caribbeangreen-300">
+                    <FiEdit2 size={18} />
                   </button>
                   <button>
-                    <RiDeleteBin6Line size={20} 
-                        onClick={() => {
-                      setConfirmationModal({
-                        text1: "Do you want to delete this course?",
-                        text2:
-                          "All the data related to this course will be deleted",
-                        btn1Text: !loading ? "Delete" : "Loading...  ",
-                        btn2Text: "Cancel",
-                        btn1Handler: !loading
-                          ? () => handleCourseDelete(course._id)
-                          : () => {},
-                        btn2Handler: !loading
-                          ? () => setConfirmationModal(null)
-                          : () => {},
-                      })
-                    }}
-                        className="px-1 transition-all duration-200 hover:scale-110 hover:text-[#ff0000]"
-                    />
+                    <RiDeleteBin6Line size={18} onClick={() => { setConfirmationModal({ text1: "Do you want to delete this course?", text2: "All the data related to this course will be deleted", btn1Text: !loading ? "Delete" : "Loading...  ", btn2Text: "Cancel", btn1Handler: !loading ? () => handleCourseDelete(course._id) : () => {}, btn2Handler: !loading ? () => setConfirmationModal(null) : () => {}, }) }} className="px-1 transition-all duration-200 hover:scale-110 hover:text-[#ff0000]" />
                   </button>
                 </div>
               </div>

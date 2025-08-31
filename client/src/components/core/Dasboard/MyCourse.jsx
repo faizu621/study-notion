@@ -37,15 +37,14 @@ function MyCourse(){
         // eslint-disable-next-line react-hooks/exhaustive-deps
       }, [])
 
-    return(
-        <div >
-            <div className=" mb-14 flex items-center justify-between">
-                <h2 className="text-3xl font-medium text-richblack-5" >My Courses</h2>
-                <IconBtn text={"Add Course"}
-                onclick={() => navigate("/dashboard/add-course")}><FaPlus/></IconBtn>
-            </div>
-            {courses && <CourseTable courses={courses} setCourses={setCourses}/>}
-        </div>
-    )
+  return (
+    <div className="w-full max-w-screen-xl mx-auto px-2 sm:px-4">
+      <div className="mb-6 sm:mb-10 md:mb-14 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
+        <h2 className="text-xl sm:text-2xl md:text-3xl font-medium text-richblack-5">My Courses</h2>
+        <IconBtn text={"Add Course"} onclick={() => navigate("/dashboard/add-course")}><FaPlus /></IconBtn>
+      </div>
+      {courses && <CourseTable courses={courses} setCourses={setCourses} />}
+    </div>
+  )
 }
 export default MyCourse;

@@ -37,10 +37,12 @@ export default function ViewCourse() {
 
   return (
     <>
-      <div className="relative flex min-h-[calc(100vh-3.5rem)]">
-        <VideoDetailsSidebar setReviewModal={setReviewModal} />
-        <div className="h-[calc(100vh-3.5rem)] flex-1 overflow-auto">
-          <div className="mx-6">
+      <div className="relative flex flex-col md:flex-row min-h-[calc(100vh-3.5rem)] w-full">
+        <div className="w-full md:w-auto">
+          <VideoDetailsSidebar setReviewModal={setReviewModal} />
+        </div>
+        <div className="h-[calc(100vh-3.5rem)] flex-1 overflow-auto w-full">
+          <div className="mx-2 sm:mx-4 md:mx-6">
             <Outlet />
           </div>
         </div>

@@ -31,33 +31,36 @@ const PowerOfCodeSection = () =>{
     }
 
 
-    return(
-        <div className=" relative  ">
-        <div className=" relative w-11/12 lg:w-10/12 mx-auto flex items-center   flex-col gap-y-10 lg:pb-[220px] pb-[900px] ">
-            <div className=" flex flex-col lg:items-center gap-y-2 items-start">
-            <div className=" lg:text-4xl font-bold text-3xl text-richblack-5 " >Unlock the <Highlight text={"Power of Code"} /> </div>
-            <div className=" text-richblack-300 ">Learn to Build Anything You Can Imagine</div>
-            </div>
-            <div className=" flex  gap-x-5 lg:text-[16px] text-xs p-1 bg-richblack-700 rounded-full ">
-                 {
-                    tabsName.map( (tab,index)=>(
-                        <div key={index} className={` ${currTab===tab ? ("bg-richblack-800 text-richblack-5"):("text-richblack-300")} " lg:py-2 lg:px-4 rounded-full  "`}
-                        onClick={()=>setMyCards(tab)}>
+    return (
+        <div className="relative w-full">
+            <div className="relative w-full max-w-screen-xl mx-auto flex flex-col items-center gap-y-8 lg:gap-y-10 pb-32 lg:pb-[220px] px-2 sm:px-4">
+                <div className="flex flex-col lg:items-center gap-y-2 items-start w-full">
+                    <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-richblack-5">Unlock the <Highlight text={"Power of Code"} /></div>
+                    <div className="text-richblack-300 text-sm sm:text-base">Learn to Build Anything You Can Imagine</div>
+                </div>
+                <div className="flex gap-2 sm:gap-4 md:gap-x-5 text-xs sm:text-sm md:text-base p-1 bg-richblack-700 rounded-full w-full max-w-2xl overflow-x-auto">
+                    {tabsName.map((tab, index) => (
+                        <div
+                            key={index}
+                            className={`cursor-pointer px-3 py-1 sm:py-2 sm:px-4 rounded-full whitespace-nowrap ${currTab === tab ? "bg-richblack-800 text-richblack-5" : "text-richblack-300"}`}
+                            onClick={() => setMyCards(tab)}
+                        >
                             <p>{tab}</p>
                         </div>
-                    ))
-                 }
-            </div>
-            <div className=" lg:w-[90%] flex lg:flex-row flex-col gap-10 lg:px-10 absolute lg:-bottom-[30%] -bottom-[10%] ">
-                {
-                    courses.map( (course,index)=>(
-                        <div key={index} className={` ${currCard==course.heading ? ("bg-richblack-5 ")
-                        :("bg-richblack-700 text-richblack-300")} lg:w-[30%]   px-6 pt-10 flex flex-col gap-y-14 justify-between`}>
-                            <div className=" flex flex-col gap-y-4">
-                                 <div className=" text-xl font-bold  ">{course.heading}</div>
-                                 <div>{course.description}</div>
+                    ))}
+                </div>
+                <div className="w-full flex flex-col lg:flex-row gap-6 md:gap-8 lg:gap-10 px-0 md:px-6 lg:px-10 mt-8 overflow-x-auto">
+                    {courses.map((course, index) => (
+                        <div
+                            key={index}
+                            className={`min-w-[260px] max-w-full flex-1 px-4 pt-8 pb-6 flex flex-col gap-y-8 justify-between rounded-lg shadow-md ${currCard === course.heading ? "bg-richblack-5" : "bg-richblack-700 text-richblack-300"}`}
+                            style={{ minWidth: '260px', maxWidth: '350px' }}
+                        >
+                            <div className="flex flex-col gap-y-2">
+                                <div className="text-lg font-bold text-richblack-900 dark:text-white">{course.heading}</div>
+                                <div className="text-sm sm:text-base">{course.description}</div>
                             </div>
-                            <div className=" p-3 flex justify-between border-t-2 border-t-black ">
+                            <div className="p-3 flex justify-between border-t-2 border-t-black">
                                 <div className="flex items-center gap-x-2">
                                     <HiUsers className=" w-[24px]"/>
                                     <p>{course.level}</p>

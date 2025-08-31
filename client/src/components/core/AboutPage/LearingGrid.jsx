@@ -46,33 +46,41 @@ const LearningGridArray = [
   ];
 
 const LearnigGrid=()=>{
-    return (<div className=" grid lg:grid-cols-4  md:grid-cols-2  grid-cols-1 lg:w-10/12 w-11/12 mx-auto lg:my-20   ">
-          {
-            LearningGridArray.map( (card,i)=>
-            (
-                <div className={`${i===0&&"col-span-2 xl:h-[294px]"} 
-                ${card.order%2==1 ? "bg-richblack-700 xl:h-[294px] ":card.order%2==0 ? 
-                "bg-richblack-800 h-[294px] " : " bg-transparent "} ${card.order===3 && "xl:col-start-2 "}  `}>
-                    {
-                        card.order<0 ?
-                        (<div className=" flex flex-col gap-5 p-5 items-start w-[90%] h-[294px] ">
-                            <h1 className=" lg:text-4xl md:text-3xl text-2xl   font-bold text-richblack-5 ">{card.heading}{" "}<Highlight text={card.highliteText} /></h1>
-                            <p className=" text-richblack-300 lg:text-[16px] text-sm ">{card.description}</p>
-
-                            <div className=" mt-2">
-                              <FTAButton active={true} toLink={card.BtnLink}>
-                                  {card.BtnText}
-                              </FTAButton>
-                            </div>
-                        </div>) :
-                        (<div className=" flex flex-col lg:p-8 p-4 lg:w-[90%] gap-8 h-[294px] ">
-                          <h1 className=" text-lg font-bold text-richblack-5 text-start lg:w-[90%] ">{card.heading}</h1>
-                          <p className=" text-richblack-300 font-medium">{card.description}</p>
-                        </div>)
-                    }
+    return (
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 w-11/12 lg:w-10/12 mx-auto my-8 sm:my-12 lg:my-20 gap-4 sm:gap-6 lg:gap-8">
+        {LearningGridArray.map((card, i) => (
+          <div
+            key={i}
+            className={`
+              ${i === 0 ? "col-span-1 lg:col-span-2 xl:h-[294px]" : ""}
+              ${card.order % 2 === 1 ? "bg-richblack-700 xl:h-[294px]" : card.order % 2 === 0 ? "bg-richblack-800 xl:h-[294px]" : "bg-transparent"}
+              ${card.order === 3 ? "xl:col-start-2" : ""}
+              rounded-lg flex flex-col justify-between min-h-[180px] sm:min-h-[220px] md:min-h-[260px] xl:min-h-[294px] p-4 sm:p-6 lg:p-8"
+            `}
+          >
+            {card.order < 0 ? (
+              <div className="flex flex-col gap-3 sm:gap-5 items-start w-full h-full">
+                <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-richblack-5">
+                  {card.heading} <Highlight text={card.highliteText} />
+                </h1>
+                <p className="text-richblack-300 text-xs sm:text-sm lg:text-base">{card.description}</p>
+                <div className="mt-2">
+                  <FTAButton active={true} toLink={card.BtnLink}>
+                    {card.BtnText}
+                  </FTAButton>
                 </div>
-            ))
-          }
-    </div>)
+              </div>
+            ) : (
+              <div className="flex flex-col gap-3 sm:gap-5 h-full">
+                <h1 className="text-base sm:text-lg font-bold text-richblack-5 text-start">
+                  {card.heading}
+                </h1>
+                <p className="text-richblack-300 font-medium text-xs sm:text-sm lg:text-base">{card.description}</p>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    )
 }
 export default LearnigGrid;

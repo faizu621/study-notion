@@ -66,103 +66,49 @@ const SignupForm =()=>{
 
       setAccountType("student");
    }
-    return (
-        <div>
-           <div className=" text-richblack-100 bg-richblack-700 px-1 p-1 max-w-max
-            gap-2 rounded-full flex gap-x-1 mt-6"  >
-                <button onClick={()=>{setAccountType('student')}} className={` ${accountType === "student" ? "bg-richblack-900 text-richblack-5 px-5 py-2 rounded-full" :
-                "bg-transparent text-richblack-200 px-5 py-2" }`} >Student</button>
-                <button className={` ${accountType === "student" ? "bg-transparent text-richblack-200 px-5 py-2" :
-                "bg-richblack-900 text-richblack-5 px-5 py-2 rounded-full" }`  } 
-                onClick={()=>{setAccountType("instructor")}}>Instructor</button>
-            </div>
-            <form onSubmit={handleOnSubmit}>
-                 {/* firstName LastName */}
-                <div className=" flex justify-between ">
-                 <label>
-               <p className=" text-white text-[14px] mt-4 ">First Name<sup className="text-pink-200 ">*</sup></p>
-                <input type="text" 
-                required
-                    placeholder="Enter First Name"
-                    name="firstName"
-                    value={formData.firstName}
-                    onChange={changeHandler}
-                    className="  bg-richblack-800 py-3 px-3 rounded-md mt-1  w-full text-richblack-5 "    
-                    />
-               </label>
-               <label>
-               <p className=" text-white text-[14px] mt-4 ">LastName<sup className="text-pink-200 ">*</sup></p>
-                <input type="text" 
-                required
-                    placeholder="Enter Last name "
-                    name="lastName"
-                    value={formData.lastName}
-                    onChange={changeHandler}
-                    className="  bg-richblack-800 py-3 px-3 rounded-md mt-1  w-full text-richblack-5 "    
-                    />
-               </label>
+        return (
+                <div className="w-full max-w-lg mx-auto p-4 sm:p-6 md:p-8 bg-richblack-800 rounded-lg shadow-lg">
+                     <div className="text-richblack-100 bg-richblack-700 px-1 py-1 max-w-max gap-2 rounded-full flex gap-x-1 mt-6 mx-auto">
+                                <button onClick={()=>{setAccountType('student')}} className={` ${accountType === "student" ? "bg-richblack-900 text-richblack-5 px-5 py-2 rounded-full" : "bg-transparent text-richblack-200 px-5 py-2" }`}>Student</button>
+                                <button className={` ${accountType === "student" ? "bg-transparent text-richblack-200 px-5 py-2" : "bg-richblack-900 text-richblack-5 px-5 py-2 rounded-full" }`} onClick={()=>{setAccountType("instructor")}}>Instructor</button>
+                        </div>
+                        <form onSubmit={handleOnSubmit} className="mt-4 flex flex-col gap-4">
+                                {/* firstName LastName */}
+                                <div className="flex flex-col sm:flex-row gap-4 w-full">
+                                    <label className="w-full">
+                                        <p className="text-white text-sm sm:text-base">First Name<sup className="text-pink-200">*</sup></p>
+                                        <input type="text" required placeholder="Enter First Name" name="firstName" value={formData.firstName} onChange={changeHandler} className="bg-richblack-900 py-3 px-3 rounded-md mt-1 w-full text-richblack-5 text-sm sm:text-base" />
+                                    </label>
+                                    <label className="w-full">
+                                        <p className="text-white text-sm sm:text-base">Last Name<sup className="text-pink-200">*</sup></p>
+                                        <input type="text" required placeholder="Enter Last name" name="lastName" value={formData.lastName} onChange={changeHandler} className="bg-richblack-900 py-3 px-3 rounded-md mt-1 w-full text-richblack-5 text-sm sm:text-base" />
+                                    </label>
+                                </div>
+                                <label className="w-full">
+                                    <p className="text-white text-sm sm:text-base">Email Address<sup className="text-pink-200">*</sup></p>
+                                    <input type="email" required placeholder="Enter email address" name="email" value={formData.email} onChange={changeHandler} className="bg-richblack-900 py-3 px-3 rounded-md mt-1 w-full text-richblack-5 text-sm sm:text-base" />
+                                </label>
+                                {/* password and confirm password  */}
+                                <div className="flex flex-col sm:flex-row gap-4 w-full">
+                                    <label className="relative w-full">
+                                        <p className="text-white text-sm sm:text-base">Password<sup className="text-pink-200">*</sup></p>
+                                        <input type={showPassword ? "text" : "password"} required placeholder="Enter Password" name="password" value={formData.password} onChange={changeHandler} className="bg-richblack-900 py-3 px-3 rounded-md mt-1 w-full text-richblack-5 text-sm sm:text-base" />
+                                        <span onClick={()=>(setShowPassword(!showPassword))} className="absolute right-3 top-[38px] sm:top-[42px] cursor-pointer">
+                                                {showPassword ? (<BiHide fill='#AFB2BF' fontSize={24}/>) : (<BiShow fill='#AFB2BF' fontSize={24}/>) }
+                                        </span>
+                                    </label>
+                                    <label className="relative w-full">
+                                        <p className="text-white text-sm sm:text-base">Confirm Password<sup className="text-pink-200">*</sup></p>
+                                        <input type={showConfirmPassword ? "text" : "password"} required placeholder="Enter Password" name="confirmPassword" value={formData.confirmPassword} onChange={changeHandler} className="bg-richblack-900 py-3 px-3 rounded-md mt-1 w-full text-richblack-5 text-sm sm:text-base" />
+                                        <span onClick={()=>(setConfirmPassword(!showConfirmPassword))} className="absolute right-3 top-[38px] sm:top-[42px] cursor-pointer">
+                                                {showConfirmPassword ? (<BiHide fill='#AFB2BF' fontSize={24}/>) : (<BiShow fill='#AFB2BF' fontSize={24}/>) }
+                                        </span>
+                                    </label>
+                                </div>
+                                <button className="w-full bg-yellow-50 py-2 rounded-md mt-6 text-richblack-900 font-semibold text-base hover:bg-yellow-100 transition">Create Account</button>
+                        </form>
                 </div>
-
-                <div>
-                <label>
-               <p className=" text-white text-[14px] mt-4 ">Email Address<sup className="text-pink-200 ">*</sup></p>
-                <input type="email" 
-                required
-                    placeholder="Enter email address"
-                    name="email"
-                    value={formData.email}
-                    onChange={changeHandler}
-                    className="  bg-richblack-800 py-3 px-3 rounded-md mt-1  w-full text-richblack-5 "    
-                    />
-               </label>
-                </div>
-
-                {/* password and confirm password  */}
-               <div className=" flex justify-between ">
-               <label className=" relative ">
-               <p className=" text-white text-[14px] mt-4 ">Password<sup className=" text-pink-200 ">*</sup></p>
-                <input type={showPassword ? "text" : "password"}
-                   required
-                   placeholder="Enter Password"
-                    name="password" 
-                    value={formData.password}
-                    onChange={changeHandler} 
-                    className="bg-richblack-800 py-3 px-3 rounded-md mt-1  w-full text-richblack-5"   
-                    />
-                    <span onClick={()=>(setShowPassword(!showPassword))}
-                    className=" absolute top-0absolute  right-3 top-[55px] cursor-pointer ">
-                        {
-                            showPassword ? (<BiHide fill='#AFB2BF' fontSize={24}/>) : (<BiShow fill='#AFB2BF' fontSize={24}/>)
-                        }
-                    </span>
-               </label>
-               <label className=" relative ">
-               <p className=" text-white text-[14px] mt-4 ">Confirm Password<sup className=" text-pink-200 ">*</sup></p>
-                <input type={showConfirmPassword ? "text" : "password"}
-                   required
-                   placeholder="Enter Password"
-                    name="confirmPassword" 
-                    value={formData.confirmPassword}
-                    onChange={changeHandler} 
-                    className="bg-richblack-800 py-3 px-3 rounded-md mt-1  w-full text-richblack-5"   
-                    />
-                    <span onClick={()=>(setConfirmPassword(!showConfirmPassword))}
-                    className=" absolute top-0absolute  right-3 top-[55px] cursor-pointer ">
-                        {
-                            showConfirmPassword ? (<BiHide fill='#AFB2BF' fontSize={24}/>) : (<BiShow fill='#AFB2BF' fontSize={24}/>)
-                        }
-                    </span>
-               </label>
-               </div>
-               {/* button */}
-               <button className=" w-full max-auto bg-yellow-50 py-2 rounded-md mt-10 text-richblack-900
-            font-semibold "
-              >
-                 Create Account
-               </button>
-            </form>
-        </div>
-    )
+        )
 }
 
 export default SignupForm;

@@ -43,17 +43,17 @@ export default function VideoDetailsSidebar({ setReviewModal }) {
 
   return (
     <>
-      <div className="flex h-[calc(100vh-3.5rem)] w-[320px] max-w-[350px] flex-col border-r-[1px] border-r-richblack-700 bg-richblack-800">
-        <div className="mx-5 flex flex-col items-start justify-between gap-2 gap-y-4 border-b border-richblack-600 py-5 text-lg font-bold text-richblack-25">
+      <div className="flex h-[calc(100vh-3.5rem)] w-full sm:w-[320px] max-w-full sm:max-w-[350px] flex-col border-r border-r-richblack-700 bg-richblack-800">
+        <div className="mx-2 sm:mx-5 flex flex-col items-start justify-between gap-2 gap-y-4 border-b border-richblack-600 py-4 sm:py-5 text-base sm:text-lg font-bold text-richblack-25">
           <div className="flex w-full items-center justify-between ">
             <div
               onClick={() => {
                 navigate(`/dashboard/enrolled-courses`)
               }}
-              className="flex h-[35px] w-[35px] items-center justify-center rounded-full bg-richblack-100 p-1 text-richblack-700 hover:scale-90"
+              className="flex h-[30px] w-[30px] sm:h-[35px] sm:w-[35px] items-center justify-center rounded-full bg-richblack-100 p-1 text-richblack-700 hover:scale-90"
               title="back"
             >
-              <IoIosArrowBack size={30} />
+              <IoIosArrowBack size={24} className="sm:size-[30px]" />
             </div>
             <IconBtn
               text="Add Review"
@@ -62,29 +62,26 @@ export default function VideoDetailsSidebar({ setReviewModal }) {
             />
           </div>
           <div className="flex flex-col">
-            <p>{courseEntireData?.courseName}</p>
-            <p className="text-sm font-semibold text-richblack-500">
+            <p className="truncate max-w-[200px] sm:max-w-full">{courseEntireData?.courseName}</p>
+            <p className="text-xs sm:text-sm font-semibold text-richblack-500">
               {completedLectures?.length} / {totalNoOfLectures}
             </p>
           </div>
         </div>
 
-        <div className="h-[calc(100vh - 5rem)] overflow-y-auto">
+        <div className="h-[calc(100vh-5rem)] overflow-y-auto">
           {courseSectionData.map((course, index) => (
             <div
-              className="mt-2 cursor-pointer text-sm text-richblack-5"
+              className="mt-2 cursor-pointer text-xs sm:text-sm text-richblack-5"
               onClick={() => setActiveStatus(course?._id)}
               key={index}
             >
               {/* Section */}
-              <div className="flex flex-row justify-between bg-richblack-600 px-5 py-4">
-                <div className="w-[70%] font-semibold">
+              <div className="flex flex-row justify-between bg-richblack-600 px-3 sm:px-5 py-3 sm:py-4">
+                <div className="w-[70%] font-semibold truncate">
                   {course?.sectionName}
                 </div>
-                <div className="flex items-center gap-3">
-                  {/* <span className="text-[12px] font-medium">
-                    Lession {course?.subSection.length}
-                  </span> */}
+                <div className="flex items-center gap-2 sm:gap-3">
                   <span
                     className={`${
                       activeStatus === course?.sectionName

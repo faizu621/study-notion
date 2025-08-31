@@ -29,15 +29,13 @@ const EditCourse = () => {
         )()
     },[])
   return (
-    <div>
-      <h1 className="mb-14 text-3xl font-medium text-richblack-5">
-        Edit Course
-      </h1>
-      <div className="mx-auto max-w-[600px]">
+    <div className="w-full px-2 sm:px-4 md:px-8">
+      <h1 className="mb-8 sm:mb-14 text-2xl sm:text-3xl font-medium text-richblack-5">Edit Course</h1>
+      <div className="mx-auto w-full max-w-lg sm:max-w-xl md:max-w-2xl">
         {course ? (
           <RenderingSteps />
         ) : (
-          <p className="mt-14 text-center text-3xl font-semibold text-richblack-100">
+          <p className="mt-10 sm:mt-14 text-center text-2xl sm:text-3xl font-semibold text-richblack-100">
             Course not found
           </p>
         )}

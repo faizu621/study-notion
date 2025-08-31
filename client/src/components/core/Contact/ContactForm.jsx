@@ -39,119 +39,44 @@ const ContactForm = () => {
     }
   }, [reset, isSubmitSuccessful])
   return (
-    <form className=" flex flex-col gap-5 my-10"
-    onSubmit={handleSubmit(submitHandler)}>
-      <div className=" flex flex-col lg:flex-row gap-5 ">
+    <form className="flex flex-col gap-4 sm:gap-5 my-6 sm:my-10 w-full max-w-2xl mx-auto px-2" onSubmit={handleSubmit(submitHandler)}>
+      <div className="flex flex-col sm:flex-row gap-4 sm:gap-5 w-full">
         {/* first name */}
-        <div className=" flex flex-col gap-2 lg:w-[48%] ">
-          <label htmlFor="firstName" className="text-richblack-5">
-            First Name
-          </label>
-          <input
-            type="text"
-            name="firstName"
-            id="firstName"
-            placeholder="Enter first name"
-            {...register("firstName", { required: true })}
-            className="bg-richblack-700 py-3 px-3 rounded-md mt-1  w-full text-richblack-5"
-          />
-          {errors.firstName && <span className=" text-yellow-50 ">please enter first name</span>}
+        <div className="flex flex-col gap-2 w-full sm:w-1/2">
+          <label htmlFor="firstName" className="text-richblack-5 text-sm sm:text-base">First Name</label>
+          <input type="text" name="firstName" id="firstName" placeholder="Enter first name" {...register("firstName", { required: true })} className="bg-richblack-700 py-2 sm:py-3 px-3 rounded-md mt-1 w-full text-richblack-5 text-sm sm:text-base" />
+          {errors.firstName && <span className="text-yellow-50 text-xs">please enter first name</span>}
         </div>
         {/* lastName */}
-        <div className=" flex flex-col gap-2 lg:w-[48%] ">
-          <label htmlFor="lastName" className="text-richblack-5">
-            Last Name
-          </label>
-          <input
-            type="text"
-            name="lastName"
-            id="lastName"
-            placeholder="Enter last name"
-            {...register("lastName")}
-            className="form-style bg-richblack-700 py-3 px-3 rounded-md mt-1  w-full text-richblack-5"
-          />
+        <div className="flex flex-col gap-2 w-full sm:w-1/2">
+          <label htmlFor="lastName" className="text-richblack-5 text-sm sm:text-base">Last Name</label>
+          <input type="text" name="lastName" id="lastName" placeholder="Enter last name" {...register("lastName")}
+            className="form-style bg-richblack-700 py-2 sm:py-3 px-3 rounded-md mt-1 w-full text-richblack-5 text-sm sm:text-base" />
         </div>
       </div>
-      <div className=" flex flex-col">
-        <label htmlFor="email" className="text-richblack-5">
-          Email Address
-        </label>
-        <input
-          type=" email"
-          name="email"
-          id="email"
-          placeholder="Enter eamil address"
-          className=" form-style bg-richblack-700 py-3 px-3 rounded-md mt-1  w-full text-richblack-5 "
-          {...register("email", { required: true })}
-        />
-        {errors.email && <span className="text-yellow-50">please enter correct email id</span>}
+      <div className="flex flex-col w-full">
+        <label htmlFor="email" className="text-richblack-5 text-sm sm:text-base">Email Address</label>
+        <input type="email" name="email" id="email" placeholder="Enter email address" className="form-style bg-richblack-700 py-2 sm:py-3 px-3 rounded-md mt-1 w-full text-richblack-5 text-sm sm:text-base" {...register("email", { required: true })} />
+        {errors.email && <span className="text-yellow-50 text-xs">please enter correct email id</span>}
       </div>
-      <div className=" flex flex-col ">
-        <label htmlFor="countryCode" className=" text-richblack-5">
-          Phone Number
-        </label>
-        <div className=" flex justify-between  ">
-          <select
-            name="countryCode"
-            id="countryCode"
-            {...register("countryCode", { required: true })}
-            className=" w-[15%] bg-richblack-700 py-3 px-3 rounded-md mt-1   text-richblack-5 lg:text-[16px] text-xs "
-          >
+      <div className="flex flex-col w-full">
+        <label htmlFor="countryCode" className="text-richblack-5 text-sm sm:text-base">Phone Number</label>
+        <div className="flex gap-2 w-full">
+          <select name="countryCode" id="countryCode" {...register("countryCode", { required: true })} className="w-1/3 sm:w-1/5 bg-richblack-700 py-2 sm:py-3 px-3 rounded-md mt-1 text-richblack-5 text-xs sm:text-base">
             {CountryCode.map((ele, index) => (
-              <option key={index}>
-                {ele.code}-{ele.country}
-              </option>
+              <option key={index}>{ele.code}-{ele.country}</option>
             ))}
           </select>
-          <input
-            type="number"
-            name="phoneNo"
-            id="phoneNo"
-            placeholder="12345 67891"
-            className="bg-richblack-700 py-3 px-3 rounded-md mt-1  w-[80%] text-richblack-5"
-            {...register("phoneNo", {
-              required: {
-                value: true,
-                message: "Please enter your Phone Number.",
-              },
-              maxLength: { value: 12, message: "Invalid Phone Number" },
-              minLength: { value: 10, message: "Invalid Phone Number" },
-            })}
-          />
+          <input type="number" name="phoneNo" id="phoneNo" placeholder="12345 67891" className="bg-richblack-700 py-2 sm:py-3 px-3 rounded-md mt-1 w-2/3 sm:w-4/5 text-richblack-5 text-sm sm:text-base" {...register("phoneNo", { required: { value: true, message: "Please enter your Phone Number." }, maxLength: { value: 12, message: "Invalid Phone Number" }, minLength: { value: 10, message: "Invalid Phone Number" }, })} />
         </div>
-        {
-          errors.phoneNo&& <span className=" text-yellow-50">{errors.phoneNo.message}</span>
-        }
+        {errors.phoneNo && <span className="text-yellow-50 text-xs">{errors.phoneNo.message}</span>}
       </div>
-      <div className=" flex flex-col ">
-        <label className=" text-richblack-5">Message</label>
-        <textarea
-          name="message"
-          id="message"
-          placeholder="Enter your message here"
-          rows={5}
-          cols={20}
-          className="bg-richblack-700 py-3 px-3 rounded-md mt-1  w-full text-richblack-5"
-          {...register("message", {
-            required: { value: true, message: "please enter message " },
-          })}
-        />
-        {
-          errors.message&& (<span className=" text-yellow-50">{errors.message.message}</span>)
-        }
+      <div className="flex flex-col w-full">
+        <label className="text-richblack-5 text-sm sm:text-base">Message</label>
+        <textarea name="message" id="message" placeholder="Enter your message here" rows={5} className="bg-richblack-700 py-2 sm:py-3 px-3 rounded-md mt-1 w-full text-richblack-5 text-sm sm:text-base" {...register("message", { required: { value: true, message: "please enter message " }, })} />
+        {errors.message && (<span className="text-yellow-50 text-xs">{errors.message.message}</span>)}
       </div>
-      {/* <button className=" my-5 " type="submit">
-          <FTAButton active={true} >Send Message</FTAButton>
-      </button> */}
-      <button
-        disabled={loading}
-        type="submit"
-        className={`rounded-md bg-yellow-50 px-6 py-3 text-center text-[13px] font-bold text-black shadow-[2px_2px_0px_0px_rgba(255,255,255,0.18)] 
-         ${
-           !loading &&
-           "transition-all duration-200 hover:scale-95 hover:shadow-none"
-         }  disabled:bg-richblack-500 sm:text-[16px] `}
-      >
+      <button disabled={loading} type="submit" className={`rounded-md bg-yellow-50 px-4 sm:px-6 py-2 sm:py-3 text-center text-xs sm:text-sm md:text-base font-bold text-black shadow-[2px_2px_0px_0px_rgba(255,255,255,0.18)] ${!loading && "transition-all duration-200 hover:scale-95 hover:shadow-none"}  disabled:bg-richblack-500`}>
         Send Message
       </button>
     </form>

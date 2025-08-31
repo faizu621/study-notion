@@ -48,13 +48,12 @@ export default function InstructorChart({ courses }) {
   }
 
   return (
-    <div className="flex flex-1 flex-col gap-y-4 rounded-md bg-richblack-800 p-6">
-      <p className="text-lg font-bold text-richblack-5">Visualize</p>
-      <div className="space-x-4 font-semibold">
-        {/* Button to switch to the "students" chart */}
+    <div className="flex flex-1 flex-col gap-y-4 rounded-md bg-richblack-800 p-4 sm:p-6 w-full max-w-2xl mx-auto">
+      <p className="text-base sm:text-lg font-bold text-richblack-5">Visualize</p>
+      <div className="space-x-2 sm:space-x-4 font-semibold flex flex-wrap">
         <button
           onClick={() => setCurrChart("students")}
-          className={`rounded-sm p-1 px-3 transition-all duration-200 ${
+          className={`rounded-sm p-1 px-2 sm:px-3 transition-all duration-200 text-xs sm:text-base ${
             currChart === "students"
               ? "bg-richblack-700 text-yellow-50"
               : "text-yellow-400"
@@ -62,10 +61,9 @@ export default function InstructorChart({ courses }) {
         >
           Students
         </button>
-        {/* Button to switch to the "income" chart */}
         <button
           onClick={() => setCurrChart("income")}
-          className={`rounded-sm p-1 px-3 transition-all duration-200 ${
+          className={`rounded-sm p-1 px-2 sm:px-3 transition-all duration-200 text-xs sm:text-base ${
             currChart === "income"
               ? "bg-richblack-700 text-yellow-50"
               : "text-yellow-400"
@@ -74,8 +72,7 @@ export default function InstructorChart({ courses }) {
           Income
         </button>
       </div>
-      <div className="relative mx-auto aspect-square h-full w-full">
-        {/* Render the Pie chart based on the selected chart */}
+      <div className="relative mx-auto aspect-square w-full max-w-xs sm:max-w-md md:max-w-lg h-[250px] sm:h-[350px] md:h-[400px]">
         <Pie
           data={currChart === "students" ? chartDataStudents : chartIncomeData}
           options={options}

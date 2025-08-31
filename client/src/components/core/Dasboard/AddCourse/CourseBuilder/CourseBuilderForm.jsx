@@ -90,53 +90,52 @@ const CourseBuilderForm = () => {
     dispatch(setStep(3));
   };
   return (
-    <div className=" bg-richblack-800 p-4 rounded-md ">
-      <div className="text-richblack-5 font-bold text-xl ">Course Builder</div>
+    <div className="bg-richblack-800 p-3 sm:p-4 md:p-6 rounded-md w-full">
+      <div className="text-richblack-5 font-bold text-lg sm:text-xl mb-2">Course Builder</div>
       <form onSubmit={handleSubmit(onsubmit)}>
-        <div className=" flex flex-col space-y-2 my-5 ">
-          <label className=" text-richblack-5 ">
-            Section Name<sup className=" text-pink-200">*</sup>
+        <div className="flex flex-col space-y-2 my-4 sm:my-5">
+          <label className="text-richblack-5 text-sm sm:text-base">
+            Section Name<sup className="text-pink-200">*</sup>
           </label>
           <input
             placeholder="Add a section to build your course "
-            className=" bg-richblack-700 px-4 py-3 rounded-md text-richblack-50  "
+            className="bg-richblack-700 px-3 sm:px-4 py-2 sm:py-3 rounded-md text-richblack-50 text-sm sm:text-base"
             {...register("sectionName", { required: true })}
           />
-          {errors.sectionName && <span>Section Name is required</span>}
+          {errors.sectionName && <span className="text-xs text-pink-200">Section Name is required</span>}
         </div>
         <IconBtn
           text={`${editSectionName ? "Edit Section Name" : "Create Section"}`}
-          className=" "
+          className=""
           outline={true}
         >
-          <IoAddCircleOutline size={20} className="text-yellow-50" />
+          <IoAddCircleOutline size={18} className="text-yellow-50" />
         </IconBtn>
         {editSectionName && (
           <button
             type="button"
             onClick={cancelEdit}
-            className="text-sm text-richblack-300 underline"
+            className="text-xs sm:text-sm text-richblack-300 underline mt-2"
           >
             Cancel Edit
           </button>
         )}
       </form>
       {course.courseContent.length > 0 && (
-          <NestedView
-            handleChangeEditSectionName={handleChangeEditSectionName}
-          />
-        )}
-        {/* prev and next button */}
-        <div className=" flex justify-end items-center space-x-2 ">
-          <button
-            onClick={goBack}
-            className={`flex cursor-pointer items-center gap-x-2 rounded-md bg-richblack-300 py-[8px] px-[20px] font-semibold text-richblack-900`}
-          > Back
-          </button>
-          <IconBtn text={"Next"} type="button" onclick={()=>goNext()}>
-            <MdNavigateNext />
-          </IconBtn>
-        </div>
+        <NestedView handleChangeEditSectionName={handleChangeEditSectionName} />
+      )}
+      {/* prev and next button */}
+      <div className="flex flex-col sm:flex-row justify-end items-center gap-2 mt-4">
+        <button
+          onClick={goBack}
+          className="flex cursor-pointer items-center gap-x-2 rounded-md bg-richblack-300 py-2 px-4 font-semibold text-richblack-900 text-xs sm:text-base"
+        >
+          Back
+        </button>
+        <IconBtn text={"Next"} type="button" onclick={() => goNext()}>
+          <MdNavigateNext />
+        </IconBtn>
+      </div>
     </div>
   );
 };

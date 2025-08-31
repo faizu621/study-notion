@@ -6,10 +6,8 @@ import DeleteAccount from "./DeleteAccount";
 
 const Settings = () => {
   return (
-    <div>
-      <h1 className="mb-14 text-3xl  font-semibold text-richblack-5">
-        Edit Profile
-      </h1>
+    <div className="w-full px-2 sm:px-4 md:px-8">
+      <h1 className="mb-8 sm:mb-14 text-2xl sm:text-3xl font-semibold text-richblack-5">Edit Profile</h1>
       {/* section 1 */}
       <UpdatePicture/>
       {/* Section 2 */}

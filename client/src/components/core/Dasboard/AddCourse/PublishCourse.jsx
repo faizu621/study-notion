@@ -65,29 +65,24 @@ const PublishCourse = () => {
   };
 
   return (
-    <div className=" bg-richblue-800 p-5 ">
+    <div className="bg-richblue-800 p-4 sm:p-6 w-full max-w-xl mx-auto rounded-md">
       <form onSubmit={handleSubmit(onSubmit)}>
-        <h2 className=" text-xl font-semibold text-richblack-5">
-          Publish Course
-        </h2>
-        <div className="mt-5 space-x-2 ">
+        <h2 className="text-lg sm:text-xl font-semibold text-richblack-5">Publish Course</h2>
+        <div className="mt-4 sm:mt-5 flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-x-4">
           <input
             type="checkbox"
             id="public"
-            className="border-gray-300 h-4 w-4 rounded bg-richblack-500 text-richblack-400 focus:ring-2 focus:ring-richblack-5"
+            className="border-gray-300 h-4 w-4 sm:h-5 sm:w-5 rounded bg-richblack-500 text-richblack-400 focus:ring-2 focus:ring-richblack-5"
             {...register("public")}
           />
-          <label className=" text-richblack-300">
-            Make this Course as Public
-          </label>
+          <label className="text-richblack-300 text-sm sm:text-base">Make this Course as Public</label>
         </div>
-
-        <div className=" flex justify-end gap-x-2 mt-5">
+        <div className="flex flex-col sm:flex-row justify-end gap-2 sm:gap-x-4 mt-4 sm:mt-5">
           <button
             disabled={loading}
             type="button"
             onClick={goBack}
-            className="flex cursor-pointer items-center gap-x-2 rounded-md bg-richblack-300 py-[8px] px-[20px] font-semibold text-richblack-900"
+            className="flex cursor-pointer items-center gap-x-2 rounded-md bg-richblack-300 py-2 px-4 font-semibold text-richblack-900 text-sm sm:text-base"
           >
             Back
           </button>

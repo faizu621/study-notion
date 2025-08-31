@@ -60,7 +60,7 @@ export default async function BuyCourse(
         Authorisation: `Bearer ${token}`,
       }
     )
-
+    console.log('a');
     if (!orderResponse.data.success) {
       throw new Error(orderResponse.data.message)
     }

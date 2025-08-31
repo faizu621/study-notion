@@ -27,18 +27,22 @@ const Cart = () => {
   // }
   const { totalItems, total } = useSelector((state) => state.cart);
   return (
-    <div>
-      <h1 className="mb-14 text-3xl font-medium text-richblack-5">Cart</h1>
-      <p className="border-b border-b-richblack-400 pb-2 font-semibold text-richblack-400">
+    <div className="w-full px-2 sm:px-4 md:px-8">
+      <h1 className="mb-8 sm:mb-14 text-2xl sm:text-3xl font-medium text-richblack-5">Cart</h1>
+      <p className="border-b border-b-richblack-400 pb-2 font-semibold text-richblack-400 text-sm sm:text-base">
         {totalItems} Courses in Cart
       </p>
       {total > 0 ? (
-        <div className="mt-8 flex flex-col-reverse items-start gap-x-10 gap-y-6 lg:flex-row">
+        <div className="mt-6 sm:mt-8 flex flex-col-reverse items-start gap-x-0 sm:gap-x-10 gap-y-6 lg:flex-row">
+          <div className="w-full lg:w-3/4">
             <CartCourse/>
+          </div>
+          <div className="w-full lg:w-1/4">
             <TotalAmount/>
+          </div>
         </div>
       ) : (
-        <p className="mt-14 text-center text-3xl text-richblack-100">
+        <p className="mt-10 sm:mt-14 text-center text-2xl sm:text-3xl text-richblack-100">
           Your cart is empty
         </p>
       )}

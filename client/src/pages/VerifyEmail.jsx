@@ -50,20 +50,16 @@ const VerifyEmail = () => {
   }
 
   return (
-    <div className="min-h-[calc(100vh-3.5rem)] grid place-items-center">
+    <div className="min-h-[calc(100vh-3.5rem)] flex items-center justify-center w-full px-2 py-8 bg-richblack-900">
       {loading ? (
         <div>
           <div className="spinner"></div>
         </div>
       ) : (
-        <div className="max-w-[500px] p-4 lg:p-8">
-          <div className="text-richblack-5 font-semibold text-[1.875rem] leading-[2.375rem]">
-            Verify Email
-          </div>
-          <div className="text-[1.125rem] leading-[1.625rem] my-4 text-richblack-100">
-            A verification code has been sent to you. Enter the code below
-          </div>
-          <form onSubmit={handleVerifyAndSignup}>
+        <div className="w-full max-w-[500px] p-4 sm:p-6 md:p-8 bg-richblack-800 rounded-lg shadow-lg">
+          <div className="text-richblack-5 font-semibold text-2xl sm:text-3xl md:text-[1.875rem] leading-tight text-center">Verify Email</div>
+          <div className="text-base sm:text-lg md:text-[1.125rem] leading-snug my-4 text-richblack-100 text-center">A verification code has been sent to you. Enter the code below</div>
+          <form onSubmit={handleVerifyAndSignup} className="flex flex-col gap-4">
             <OTPInput
               numInputs={6}
               value={otp}
@@ -75,7 +71,7 @@ const VerifyEmail = () => {
                   style={{
                     boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
                   }}
-                  className="w-[48px] lg:w-[60px] border-0 bg-richblack-800 rounded-[0.5rem] text-richblack-5 aspect-square text-center focus:border-0 focus:outline-2 focus:outline-yellow-50"
+                  className="w-8 sm:w-10 md:w-12 lg:w-[60px] border-0 bg-richblack-900 rounded-[0.5rem] text-richblack-5 aspect-square text-center focus:border-0 focus:outline-2 focus:outline-yellow-50"
                 />
               )}
               containerStyle={{
@@ -83,22 +79,21 @@ const VerifyEmail = () => {
                 gap: "0 6px",
               }}
             />
-
             <button
               type="submit"
-              className="w-full bg-yellow-50 py-[12px] px-[12px] rounded-[8px] mt-6 font-medium text-richblack-900"
+              className="w-full bg-yellow-50 py-3 px-4 rounded-md mt-4 font-medium text-richblack-900 text-base hover:bg-yellow-100 transition"
             >
               Verify Email
             </button>
           </form>
-          <div className="mt-6 flex items-center justify-between">
-            <Link to={"/signup"}>
-              <p className="text-richblack-5 flex items-center gap-x-2">
+          <div className="mt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+            <Link to={"/signup"} className="w-full sm:w-auto">
+              <p className="text-richblack-5 flex items-center gap-x-2 justify-center sm:justify-start">
                 <BiArrowBack /> Back to Signup
               </p>
             </Link>
             <button
-              className="flex items-center text-blue-100 gap-x-2"
+              className="flex items-center text-blue-100 gap-x-2 w-full sm:w-auto justify-center sm:justify-end"
               onClick={() => dispatch(otpSend(signupData.email, navigate))}
             >
               <RxCountdownTimer />

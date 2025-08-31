@@ -57,67 +57,49 @@ const RequirementsField = ({
     setRequirementsList(updateReuirement);
   };
   return (
-    <div>
-        {/* <label className="text-sm text-richblack-5" htmlFor={name}>
-         {label} <sup className="text-pink-200">*</sup>
-       </label>
-       <div className="flex flex-col items-start space-y-2">
-         <input
+    <div className="flex flex-col space-y-2 w-full">
+      <label className="text-richblack-5 text-sm sm:text-base">{label}</label>
+      <div className="flex flex-col sm:flex-row items-center gap-2">
+        <input
           type="text"
           id={name}
           value={requirement}
+          placeholder=""
           onChange={(e) => setRequirement(e.target.value)}
-          className="form-style w-full"
+          className="form-style py-2 sm:py-3 px-3 sm:px-4 bg-richblack-700 rounded-md w-full text-richblack-300 text-xs sm:text-base"
         />
         <button
           type="button"
           onClick={handleOnAdd}
-          className="font-semibold text-yellow-50"
+          className="font-semibold text-yellow-50 text-xs sm:text-base px-3 py-2"
         >
           Add
         </button>
-      </div> */}
-         <label className=" text-richblack-5">{label}</label>
-           <input
-            type="text"
-            id={name}
-            value={requirement}
-            placeholder=""
-            onChange={(e) => setRequirement(e.target.value)}
-            className=" form-style py-3 px-4 bg-richblack-700 rounded-md w-full text-richblack-300 "
-          />
-          
-          <button
-          type="button"
-          onClick={handleOnAdd}
-          className="font-semibold text-yellow-50"
-        >
-          Add
-        </button>
-        {
-            requirementsList.length>0&&
-            <ul className="mt-2 list-inside list-disc">
-            {
-                
-                requirementsList.map((ele,index)=>(
-                    <li key={index} className="flex items-center text-richblack-5">
-                        <p>{ele}</p>
-                        <button
-                        type="button"
-                        className="ml-2 text-xs text-pure-greys-300 "
-                        onClick={()=>handleOnClear(index)}>clear</button>
-                    </li>
-                ))
-            }
-          </ul>
-        }
-        {errors[name] && (
+      </div>
+
+      {requirementsList.length > 0 && (
+        <ul className="mt-2 list-inside list-disc text-xs sm:text-base">
+          {requirementsList.map((item, idx) => (
+            <li key={idx} className="flex items-center justify-between">
+              <span>{item}</span>
+              <button
+                type="button"
+                onClick={() => handleOnClear(idx)}
+                className="ml-2 text-pink-200 text-xs sm:text-base"
+              >
+                Remove
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
+      {errors[name] && (
         <span className="ml-2 text-xs tracking-wide text-pink-200">
           {label} is required
         </span>
       )}
     </div>
-    
   );
 };
+
 export default RequirementsField;

@@ -27,72 +27,70 @@ const EditProfile = () => {
   };
   return (
     <form onSubmit={handleSubmit(submitHandler)}>
-      <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-8 px-12">
-        <h2 className="text-lg font-semibold text-richblack-5">
-          Profile Information
-        </h2>
-        <div className=" flex justify-between items-center gap-x-4 ">
-          <div className=" flex flex-col w-full ">
-            <label className="text-richblack-300 ">First Name</label>
+      <div className="my-8 sm:my-10 flex flex-col gap-y-6 rounded-md border border-richblack-700 bg-richblack-800 p-4 sm:p-8 sm:px-12 w-full">
+        <h2 className="text-base sm:text-lg font-semibold text-richblack-5">Profile Information</h2>
+        <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
+          <div className="flex flex-col w-full">
+            <label className="text-richblack-300 text-xs sm:text-base">First Name</label>
             <input
               type="text"
               name="firstName"
               id="firstName"
               placeholder="Enter First Name"
-              className="form-style bg-richblack-700 py-3 px-3 rounded-md mt-1  w-full text-richblack-5 "
+              className="form-style bg-richblack-700 py-2 sm:py-3 px-3 rounded-md mt-1 w-full text-richblack-5 text-xs sm:text-base"
               {...register("firstName", { required: true })}
               defaultValue={user?.firstName}
             />
             {errors.firstName && (
-              <span className="-mt-1 text-[12px] text-yellow-100">
+              <span className="-mt-1 text-xs sm:text-[12px] text-yellow-100">
                 Please enter your first name.
               </span>
             )}
           </div>
-          <div className=" flex flex-col w-full ">
-            <label className="text-richblack-300 ">Last Name</label>
+          <div className="flex flex-col w-full mt-4 sm:mt-0">
+            <label className="text-richblack-300 text-xs sm:text-base">Last Name</label>
             <input
               type="text"
               name="lastName"
               id="lastName"
               placeholder="Enter Last Name"
-              className="form-style bg-richblack-700 py-3 px-3 rounded-md mt-1  w-full text-richblack-5 "
+              className="form-style bg-richblack-700 py-2 sm:py-3 px-3 rounded-md mt-1 w-full text-richblack-5 text-xs sm:text-base"
               {...register("lastName", { required: true })}
               defaultValue={user?.lastName}
             />
             {errors.lastName && (
-              <span className="-mt-1 text-[12px] text-yellow-100">
+              <span className="-mt-1 text-xs sm:text-[12px] text-yellow-100">
                 Please enter your last name.
               </span>
             )}
           </div>
         </div>
 
-        <div className=" flex justify-between items-center gap-x-4 ">
-          <div className=" flex flex-col w-full ">
-            <label className="text-richblack-300 ">Date Of Birth</label>
+        <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
+          <div className="flex flex-col w-full">
+            <label className="text-richblack-300 text-xs sm:text-base">Date Of Birth</label>
             <input
               type="date"
               name="dateOfBirth"
               id="dateOfBirth"
               placeholder="dd/mm/yyyy"
-              className="form-style bg-richblack-700 py-3 px-3 rounded-md mt-1  w-full text-richblack-5 "
+              className="form-style bg-richblack-700 py-2 sm:py-3 px-3 rounded-md mt-1 w-full text-richblack-5 text-xs sm:text-base"
               {...register("dateOfBirth", { required: true })}
             />
             {errors.dateOfBirth && (
-              <span className="-mt-1 text-[12px] text-yellow-100">
+              <span className="-mt-1 text-xs sm:text-[12px] text-yellow-100">
                 Please enter your date of birth.
               </span>
             )}
           </div>
-          <div className=" flex flex-col w-full ">
-            <label className="text-richblack-300 ">Gender</label>
+          <div className="flex flex-col w-full mt-4 sm:mt-0">
+            <label className="text-richblack-300 text-xs sm:text-base">Gender</label>
             <select
               type="text"
               name="gender"
               id="gender"
               placeholder="Enter Last Name"
-              className="form-style bg-richblack-700 py-3 px-3 rounded-md mt-1  w-full text-richblack-5 "
+              className="form-style bg-richblack-700 py-2 sm:py-3 px-3 rounded-md mt-1 w-full text-richblack-5 text-xs sm:text-base"
               {...register("gender", { required: true })}
             >
               <option>Male</option>

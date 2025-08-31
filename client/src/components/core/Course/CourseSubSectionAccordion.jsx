@@ -4,13 +4,13 @@ import { HiOutlineVideoCamera } from "react-icons/hi"
 
 function CourseSubSectionAccordion({ subSec }) {
   return (
-    <div>
-      <div className="flex justify-between py-2">
-        <div className={`flex items-center gap-2`}>
+    <div className="w-full">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center py-2 gap-2">
+        <div className="flex items-center gap-2">
           <span>
             <HiOutlineVideoCamera />
           </span>
-          <p>{subSec?.title}</p>
+          <p className="text-xs sm:text-sm md:text-base text-richblack-5">{subSec?.title}</p>
         </div>
       </div>
     </div>

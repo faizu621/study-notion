@@ -107,19 +107,19 @@ const SubSectionModal = ({
   const [loading, setLoading] = useState(false);
 
   return (
-    <div className="fixed inset-0 z-[1000] !mt-0 grid place-items-center overflow-auto bg-white bg-opacity-10 backdrop-blur-sm">
-      <div className="my-10 w-11/12 max-w-[600px] rounded-lg border border-richblack-400 bg-richblack-800 p-10">
+    <div className="fixed inset-0 z-[1000] !mt-0 grid place-items-center overflow-auto bg-white bg-opacity-10 backdrop-blur-sm px-2 sm:px-0">
+      <div className="my-6 sm:my-10 w-full sm:w-11/12 max-w-[600px] rounded-lg border border-richblack-400 bg-richblack-800 p-4 sm:p-8 md:p-10">
         {/* Modal heading */}
-        <div className="flex items-center justify-between rounded-t-lg bg-richblack-700 p-5">
-          <p className="text-xl font-semibold text-richblack-5">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between rounded-t-lg bg-richblack-700 p-3 sm:p-5 gap-2 sm:gap-0">
+          <p className="text-lg sm:text-xl font-semibold text-richblack-5">
             {view && "Viewing"} {add && "Adding"} {edit && "Editing"} Lecture
           </p>
           <button onClick={() => (!loading ? setModalData(null) : {})}>
-            <RxCross2 className="text-2xl text-richblack-5" />
+            <RxCross2 className="text-xl sm:text-2xl text-richblack-5" />
           </button>
         </div>
         {/* Section Modal form */}
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 mt-4">
           {/* lecture upload */}
           <Upload
             name="lectureVideo"
@@ -132,7 +132,7 @@ const SubSectionModal = ({
             editData={edit ? modalData.videoUrl : null}
           />
           <div>
-            <label className="text-sm text-richblack-5" htmlFor="lectureTitle">
+            <label className="text-xs sm:text-sm text-richblack-5" htmlFor="lectureTitle">
               Lecture Title {!view && <sup className="text-pink-200">*</sup>}
             </label>
             <input
@@ -140,7 +140,7 @@ const SubSectionModal = ({
               id="lectureTitle"
               placeholder="Enter Lecture Title"
               {...register("lectureTitle", { required: true })}
-              className="form-style w-full bg-richblack-700 px-4 py-3 rounded-md text-richblack-50"
+              className="form-style w-full bg-richblack-700 px-3 sm:px-4 py-2 sm:py-3 rounded-md text-richblack-50 text-xs sm:text-base"
             />
             {errors.lectureTitle && (
               <span className="ml-2 text-xs tracking-wide text-pink-200">
@@ -149,16 +149,15 @@ const SubSectionModal = ({
             )}
           </div>
           <div>
-            <label className=" text-sm text-richblack-5">
-              Lecture Description{" "}
-              {!view && <sup className="text-pink-200">*</sup>}
+            <label className="text-xs sm:text-sm text-richblack-5">
+              Lecture Description {!view && <sup className="text-pink-200">*</sup>}
             </label>
             <textarea
               disabled={view || loading}
               id="lectureDesc"
               placeholder="Enter Lecture Description"
               {...register("lectureDesc", { required: true })}
-              className="form-style w-full bg-richblack-700 px-4 py-3 rounded-md text-richblack-50"
+              className="form-style w-full bg-richblack-700 px-3 sm:px-4 py-2 sm:py-3 rounded-md text-richblack-50 text-xs sm:text-base"
             />
             {errors.lectureDesc && (
               <span className="ml-2 text-xs tracking-wide text-pink-200">
@@ -167,10 +166,10 @@ const SubSectionModal = ({
             )}
           </div>
           {!view && (
-            <IconBtn 
+            <IconBtn
               type="submit"
               disabled={loading}
-              text={`${loading ? "Loading" : edit ? "Save Cahnges" : "Save"}`}
+              text={`${loading ? "Loading" : edit ? "Save Changes" : "Save"}`}
             />
           )}
         </form>

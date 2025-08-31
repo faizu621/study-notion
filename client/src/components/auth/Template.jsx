@@ -7,44 +7,29 @@ import frame from "../../assets/Images/frame.png"
 
 const Template= ({heading,desc1,desc2,formType,image}) =>{
     return(
-        <div>
-            {/* w-11/12 */}
-            <div className=" w-11/12 lg:max-w-[1160px] mx-auto flex justify-between mt-12 pb-12">
-                 {/* section 1 */}
-                <div className="flex flex-col max-w-[450px] w-11/12">
-                   <div className="text-white text-3xl font-semibold">{heading}</div>
-                   <div className="text-richblack-100 text-[18px]">{desc1} 
-                   <span className="text-blue-100 italic text-[16px]">{desc2}</span> </div>
-
+        <div className="w-full min-h-screen flex items-center justify-center bg-richblack-900 py-8 px-2">
+            <div className="w-full max-w-5xl mx-auto flex flex-col-reverse lg:flex-row items-center justify-between gap-8 lg:gap-16 bg-transparent mt-8 mb-8">
+                {/* section 1 */}
+                <div className="flex flex-col w-full max-w-md gap-4">
+                   <div className="text-white text-2xl sm:text-3xl md:text-4xl font-semibold mb-2">{heading}</div>
+                   <div className="text-richblack-100 text-base sm:text-lg md:text-xl mb-2">{desc1} <span className="text-blue-100 italic text-sm sm:text-base md:text-lg">{desc2}</span></div>
                    <div>
-                    {
-                        formType==='signup' ? (<SignupForm/>) : (<LoginForm/>)
-                    }
+                    {formType==='signup' ? (<SignupForm/>) : (<LoginForm/>) }
                    </div>
                    <div className="flex text-richblack-700 items-center mt-4 gap-x-2">
                       <div className="w-full bg-richblack-700 h-[2px]"></div>
                       <div>OR</div>
                       <div className="w-full bg-richblack-700 h-[2px]"></div>
                    </div>
-                   <div className="bg-transparent w-full text-richblack-100 flex items-center justify-center 
-            gap-x-2 border border-richblack-700 px-2 py-2 mt-6 rounded-md font-semibold"
-                   >
-                   <FcGoogle/>
-                   SignUp with Google</div>
+                   <div className="bg-transparent w-full text-richblack-100 flex items-center justify-center gap-x-2 border border-richblack-700 px-2 py-2 mt-6 rounded-md font-semibold cursor-pointer hover:bg-richblack-700 transition">
+                     <FcGoogle/>
+                     Sign Up with Google
+                   </div>
                 </div>
-
                 {/* section 2*/}
-                <div className=" relative ">
-                   <img src={frame}
-              alt="Pattern"
-              width={558}
-              height={504}
-              loading="lazy"/>
-                   <img
-                    src={image}
-                    className=" absolute -top-4 right-4"
-                   />
-                   
+                <div className="relative w-full flex items-center justify-center max-w-lg">
+                   <img src={frame} alt="Pattern" className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg h-auto object-contain" loading="lazy"/>
+                   <img src={image} className="absolute -top-4 right-4 w-2/3 sm:w-3/4 md:w-4/5 lg:w-[80%] h-auto object-contain rounded-lg shadow-lg" alt="Main visual" />
                 </div>
             </div>
         </div>

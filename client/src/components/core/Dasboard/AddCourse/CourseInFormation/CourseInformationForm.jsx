@@ -180,49 +180,55 @@ const CourseInformationForm = () => {
   } = useForm();
   return (
     <form
-      className="space-y-8 rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-6"
+      className="space-y-8 rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-4 sm:p-6 w-full max-w-2xl mx-auto"
       onSubmit={handleSubmit(onSubmit)}
     >
-      <div className=" flex flex-col space-y-2">
-        <label className=" text-richblack-5 ">Course Title</label>
+      {/* Course Title */}
+      <div className="flex flex-col space-y-1 sm:space-y-2">
+        <label className="text-richblack-5 text-sm sm:text-base">Course Title</label>
         <input
           type="text"
           {...register("courseTitle", { required: true })}
           placeholder="Enter course title"
-          className="bg-richblack-700 px-4 py-2  rounded-md text-richblack-5 "
+          className="bg-richblack-700 px-3 sm:px-4 py-2 sm:py-3 rounded-md text-richblack-5 text-xs sm:text-base w-full"
         />
-        {errors.courseTitle && <span>Course Title required</span>}
+        {errors.courseTitle && <span className="text-xs text-pink-200">Course Title required</span>}
       </div>
-      <div className=" flex flex-col space-y-2 ">
-        <label className=" text-richblack-5 ">Course Short Description</label>
+      {/* Short Description */}
+      <div className="flex flex-col space-y-1 sm:space-y-2">
+        <label className="text-richblack-5 text-sm sm:text-base">Course Short Description</label>
         <textarea
           type="text"
           placeholder="Enter Description"
           {...register("courseShortDesc", { required: true })}
           cols={17}
           rows={5}
-          className="bg-richblack-700 px-4 py-3  rounded-md text-richblack-5"
+          className="bg-richblack-700 px-3 sm:px-4 py-2 sm:py-3 rounded-md text-richblack-5 text-xs sm:text-base w-full resize-none"
         />
-        {errors.courseShortDesc && <span>Course Description is required</span>}
+        {errors.courseShortDesc && <span className="text-xs text-pink-200">Course Description is required</span>}
       </div>
-      <div className=" relative flex flex-col space-y-2 ">
-        <label className=" text-richblack-5 ">Course Price</label>
-        <input
-          type="text"
-          placeholder="Enter Course price"
-          {...register("coursePrice", { required: true })}
-          className="bg-richblack-700 px-8 py-3  rounded-md text-richblack-5"
-        />
-        <HiOutlineCurrencyRupee className="absolute top-8 ml-1 text-richblack-5 text-[24px] " />
-        {errors.coursePrice && <span>Course price is required</span>}
+      {/* Price */}
+      <div className="relative flex flex-col space-y-1 sm:space-y-2">
+        <label className="text-richblack-5 text-sm sm:text-base">Course Price</label>
+        <div className="relative w-full">
+          <input
+            type="text"
+            placeholder="Enter Course price"
+            {...register("coursePrice", { required: true })}
+            className="bg-richblack-700 pl-8 pr-3 sm:pr-4 py-2 sm:py-3 rounded-md text-richblack-5 text-xs sm:text-base w-full"
+          />
+          <HiOutlineCurrencyRupee className="absolute left-2 top-1/2 -translate-y-1/2 text-richblack-5 text-lg sm:text-xl" />
+        </div>
+        {errors.coursePrice && <span className="text-xs text-pink-200">Course price is required</span>}
       </div>
-      <div className=" flex flex-col space-y-2 ">
-        <label className=" text-richblack-5">Course Category</label>
+      {/* Category */}
+      <div className="flex flex-col space-y-1 sm:space-y-2">
+        <label className="text-richblack-5 text-sm sm:text-base">Course Category</label>
         <select
           {...register("courseCategory", { required: true })}
           defaultValue=""
           id="courseCategory"
-          className="bg-richblack-700 px-4 py-3  rounded-md text-richblack-5"
+          className="bg-richblack-700 px-3 sm:px-4 py-2 sm:py-3 rounded-md text-richblack-5 text-xs sm:text-base w-full"
         >
           <option value="" disabled>
             Choose a category
@@ -234,9 +240,10 @@ const CourseInformationForm = () => {
               </option>
             ))}
         </select>
-        {errors.courseCategory && <span>Course Category is required</span>}
+        {errors.courseCategory && <span className="text-xs text-pink-200">Course Category is required</span>}
       </div>
-      <div className="">
+      {/* Tags */}
+      <div>
         <ChipInput
           label={"Tags"}
           name="courseTags"
@@ -247,6 +254,7 @@ const CourseInformationForm = () => {
           getValues={getValues}
         />
       </div>
+      {/* Thumbnail */}
       <div>
         <Upload
           name="courseImage"
@@ -257,20 +265,22 @@ const CourseInformationForm = () => {
           editData={editCourse ? course?.thumbnail : null}
         />
       </div>
-      <div className=" flex flex-col space-y-2">
-        <label className=" text-richblack-5">
-          Benfits Of Course<sup>*</sup>{" "}
+      {/* Benefits */}
+      <div className="flex flex-col space-y-1 sm:space-y-2">
+        <label className="text-richblack-5 text-sm sm:text-base">
+          Benefits Of Course<sup>*</sup>
         </label>
         <textarea
           id="courseBenefits"
           placeholder="Enter Benefits of the course"
           {...register("courseBenefits", { required: true })}
-          className="bg-richblack-700 px-4 py-3  rounded-md text-richblack-5"
+          className="bg-richblack-700 px-3 sm:px-4 py-2 sm:py-3 rounded-md text-richblack-5 text-xs sm:text-base w-full resize-none"
           cols={17}
           rows={5}
         />
-        {errors.courseBenefits && <span>Course Benefits are required</span>}
+        {errors.courseBenefits && <span className="text-xs text-pink-200">Course Benefits are required</span>}
       </div>
+      {/* Requirements/Instructions */}
       <div>
         <RequirementsField
           name="courseRequirements"
@@ -281,13 +291,14 @@ const CourseInformationForm = () => {
           getValues={getValues}
         />
       </div>
-
-      <div className="flex justify-end gap-x-2">
+      {/* Actions */}
+      <div className="flex flex-col sm:flex-row justify-end gap-2 sm:gap-x-2 w-full">
         {editCourse && (
           <button
+            type="button"
             onClick={() => dispatch(setStep(2))}
             disabled={loading}
-            className={`flex cursor-pointer items-center gap-x-2 rounded-md bg-richblack-300 py-[8px] px-[20px] font-semibold text-richblack-900`}
+            className="flex cursor-pointer items-center justify-center gap-x-2 rounded-md bg-richblack-300 py-2 px-4 font-semibold text-richblack-900 text-xs sm:text-base w-full sm:w-auto"
           >
             Continue without saving
           </button>
@@ -295,6 +306,7 @@ const CourseInformationForm = () => {
         <IconBtn
           disabled={loading}
           text={!editCourse ? "Next" : "Save Changes"}
+          className="w-full sm:w-auto"
         >
           <MdNavigateNext />
         </IconBtn>

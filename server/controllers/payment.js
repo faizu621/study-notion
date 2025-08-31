@@ -83,9 +83,10 @@ exports.verifyPayment = async (req, res) => {
   const razorpay_signature = req.body?.razorpay_signature
   const courses = req.body?.courses
 
-  
+
 
   const userId = req.user.id
+  console.log("userId",userId);
 
   if (
     !razorpay_order_id ||
@@ -94,16 +95,20 @@ exports.verifyPayment = async (req, res) => {
     !courses ||
     !userId
   ) {
-    return res.status(200).json({ success: false, message: "Payment Failed" })
+    return res.status(400).json({ success: false, message: "Payment Failed" })
   }
 
   let body = razorpay_order_id + "|" + razorpay_payment_id
+
+  console.log("body",body);
 
   const expectedSignature = crypto
     .createHmac("sha256", process.env.RAZORPAY_SECRET)
     .update(body.toString())
     .digest("hex")
 
+  console.log('expected sign',expectedSignature);
+  console.log('razorpay_sign', razorpay_signature);  
   if (expectedSignature === razorpay_signature) {
     await enrollStudents(courses, userId, res)
     return res.status(200).json({ success: true, message: "Payment Verified" })

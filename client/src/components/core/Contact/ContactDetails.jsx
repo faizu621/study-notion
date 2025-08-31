@@ -26,19 +26,19 @@ const contactDetails = [
 ];
 const ContactDetails = () => {
   return (
-    <div className=" flex flex-col gap-5 p-10 bg-richblack-700">
+    <div className="flex flex-col gap-4 sm:gap-5 p-4 sm:p-8 md:p-10 bg-richblack-700 rounded-lg w-full max-w-2xl mx-auto">
       {contactDetails.map((ele, i) => {
         let Icon = Icon1[ele.icon] || Icon2[ele.icon] || Icon3[ele.icon];
         return (
-          <div className=" flex flex-col ">
-            <div className=" flex gap-5 ">
-              <div className=" text-richblack-5">
-              <Icon size={25}  />
+          <div key={i} className="flex flex-col">
+            <div className="flex gap-3 sm:gap-5 items-start">
+              <div className="text-richblack-5 flex-shrink-0">
+                <Icon size={28} />
               </div>
               <div>
-                <h1 className=" text-xl font-bold text-richblack-5">{ele?.heading}</h1>
-                <p>{ele?.description}</p>
-                <p>{ele?.details}</p>
+                <h1 className="text-lg sm:text-xl font-bold text-richblack-5">{ele?.heading}</h1>
+                <p className="text-xs sm:text-sm text-richblack-200">{ele?.description}</p>
+                <p className="text-xs sm:text-sm text-richblack-100 break-words">{ele?.details}</p>
               </div>
             </div>
           </div>

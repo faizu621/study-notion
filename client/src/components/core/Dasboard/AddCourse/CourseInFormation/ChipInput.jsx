@@ -51,13 +51,13 @@ const ChipInput = ({
     setChips(newChips);
   };
   return (
-    <div className="flex flex-col space-y-2">
-      <label className=" text-richblack-5 ">{label}</label>
-      <div className=" flex w-full flex-wrap gap-y-2">
+    <div className="flex flex-col space-y-2 w-full">
+      <label className="text-richblack-5 text-sm sm:text-base">{label}</label>
+      <div className="flex w-full flex-wrap gap-1 sm:gap-y-2">
         {chips.map((chip, index) => (
           <div
             key={index}
-            className="m-1 flex items-center rounded-full bg-yellow-400 px-2 py-1 text-sm text-richblack-5"
+            className="m-1 flex items-center rounded-full bg-yellow-400 px-2 py-1 text-xs sm:text-sm text-richblack-5"
           >
             {chip}
             <button
@@ -75,7 +75,7 @@ const ChipInput = ({
         type="text"
         placeholder={placeholder}
         onKeyDown={handleKeyDown}
-        className="bg-richblack-700 px-4 py-3  rounded-md text-richblack-5"
+        className="bg-richblack-700 px-3 sm:px-4 py-2 sm:py-3 rounded-md text-richblack-5 text-xs sm:text-base"
       />
       {/* Render an error message if the input is required and not filled */}
       {errors[name] && (

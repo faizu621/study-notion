@@ -60,16 +60,16 @@ const UpdatePicture = () => {
   }, [imageFile])
 
   return (
-    <div className="flex items-center justify-between rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-8 px-12 text-richblack-5">
-      <div className=" flex flex-row items-center gap-4">
+    <div className="flex flex-col sm:flex-row items-center justify-between rounded-md border border-richblack-700 bg-richblack-800 p-4 sm:p-8 sm:px-12 text-richblack-5 w-full gap-4 sm:gap-0">
+      <div className="flex flex-col sm:flex-row items-center gap-4 w-full">
         <img
           src={previewSource || user?.image}
           alt={`profile-${user?.firstName}`}
-          className="aspect-square w-[78px] rounded-full  object-cover  "
+          className="aspect-square w-[60px] sm:w-[78px] rounded-full object-cover"
         />
-        <div className=" flex flex-col gap-y-2 ">
-          <p>Change profile picture </p>
-          <div className=" flex gap-4 items-center">
+        <div className="flex flex-col gap-y-2 w-full">
+          <p className="text-sm sm:text-base">Change profile picture</p>
+          <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 items-center w-full">
             <input
               type="file"
               className="hidden"
@@ -77,15 +77,15 @@ const UpdatePicture = () => {
               ref={fileInputRef}
               accept="image/png, image/gif, image/jpeg"
             />
-            <button className="cursor-pointer rounded-md bg-richblack-700 py-2 px-5 font-semibold text-richblack-50"
-            onClick={handleClick}
-            disabled={loading}>
+            <button
+              className="cursor-pointer rounded-md bg-richblack-700 py-2 px-4 sm:px-5 font-semibold text-richblack-50 text-xs sm:text-base w-full sm:w-auto"
+              onClick={handleClick}
+              disabled={loading}
+            >
               Select
             </button>
-
-            <IconBtn text={loading ? "uploading..." : "upload"} 
-            onclick={handleFileUpload}>
-              {!loading && <FiUpload className="text-lg text-richblack-900" />}
+            <IconBtn text={loading ? "uploading..." : "upload"} onclick={handleFileUpload} className="w-full sm:w-auto">
+              {!loading && <FiUpload className="text-base sm:text-lg text-richblack-900" />}
             </IconBtn>
           </div>
         </div>
